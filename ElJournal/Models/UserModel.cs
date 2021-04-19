@@ -43,7 +43,7 @@ namespace ElJournal.Models
                 User user = db.Users.FirstOrDefault(u => u.Login == login && u.Pass == pass);
                 if (user == null)
                 {
-                    var errDialog = new ErrorDialog("Пользователь не найден. Неверные данные или пароль");
+                    var errDialog = new ErrorDialog("Пользователь не найден. Неверный логин или пароль");
                     errDialog.ShowDialog();
                 }
                 else

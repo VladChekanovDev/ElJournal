@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ErrorDialog"
-        SizeToContent="Height"
+        SizeToContent="WidthAndHeight"
         Width="300px"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
@@ -23,7 +23,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="18"
-                Margin="0 15 0 15"
+                Margin="15"
                 />
             <Button
                 x:Name="AcceptButton"
