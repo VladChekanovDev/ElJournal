@@ -51,9 +51,9 @@
             </StackPanel>
             <Image
                 Grid.Row="1"
-                HorizontalAlignment="Center" 
+                HorizontalAlignment="Center"
+                MinWidth="201px" 
                 Source="/Resources/ggpk.png"
-                MinWidth="201px"
                 />
             <TextBlock
                 Grid.Row="2"
