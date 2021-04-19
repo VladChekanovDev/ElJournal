@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ElJournal.Entities;
+using ElJournal.Models;
+using ElJournal.Other;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;

@@ -53,11 +53,12 @@ namespace ElJournal.ViewModels
         {
             get
             {
-                return new DelegateCommand((obj) =>
+                return _loginUser ??
+                    (_loginUser = new DelegateCommand((obj) =>
                 {
                     var um = new UserModel();
                     um.LoginUser(_login, _password);
-                });
+                }));
             }
         }
 

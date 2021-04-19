@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElJournal.Views"
+        xmlns:other="clr-namespace:ElJournal.Other"
         xmlns:vm="clr-namespace:ElJournal.ViewModels"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
@@ -27,6 +28,9 @@
             </Grid.RowDefinitions>
             <TextBlock
                 Grid.Row="0"
+                Margin="15 0 0 0"
+                FontSize="15"
+                FontWeight="Bold"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center">
                 ElJournal
@@ -53,7 +57,7 @@
                 Grid.Row="1"
                 HorizontalAlignment="Center"
                 MinWidth="201px" 
-                Source="/Resources/ggpk.png"
+                Source="/Resources/Images/ggpk.png"
                 />
             <TextBlock
                 Grid.Row="2"
@@ -71,7 +75,8 @@
                 MinWidth="150px"
                 FontSize="18"
                 materialDesign:HintAssist.Hint="Логин"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                Text="{Binding Login}"/>
             <PasswordBox
                 Grid.Row="4"
                 x:Name="PassTextBox"
@@ -79,9 +84,15 @@
                 VerticalAlignment="Center"
                 Width="300px"
                 MinWidth="150px"
+                other:PasswordBoxAssistant.BindPassword="True"
                 FontSize="18"
                 materialDesign:HintAssist.Hint="Пароль"
-                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                <other:PasswordBoxAssistant.BoundPassword>
+                    <Binding Mode="TwoWay" Path="Password">
+                    </Binding>
+                </other:PasswordBoxAssistant.BoundPassword>
+            </PasswordBox>
             <Button 
                 x:Name="SignInButton"
                 Grid.Row="5"

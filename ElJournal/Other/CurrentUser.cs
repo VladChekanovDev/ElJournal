@@ -7,6 +7,6 @@ namespace ElJournal.Other
     public static class CurrentUser
     {
         public static int UserID;
-        public static int UserType;
+        public static int? UserType;
     }
 }
