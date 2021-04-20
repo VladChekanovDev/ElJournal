@@ -1,5 +1,6 @@
 ﻿using ElJournal.Models;
 using ElJournal.Other;
+using ElJournal.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -61,7 +62,9 @@ namespace ElJournal.ViewModels
                 {
                     var um = new UserModel();
                     um.LoginUser(_login, _password);
-
+                    var mv = new MainView();
+                    mv.Show();
+                    Application.Current.MainWindow.Close();
                 });
             }
         }
