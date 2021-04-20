@@ -14,6 +14,8 @@ namespace ElJournal.ViewModels
         private string _login;
         private string _password;
         private DelegateCommand _loginUser;
+        private DelegateCommand _closeApp;
+        private DelegateCommand _minimizeWindow;
 
         #endregion
 
@@ -28,7 +30,7 @@ namespace ElJournal.ViewModels
             set
             {
                 _login = value;
-                OnPropertyChanged(nameof(Login));
+                OnPropertyChanged(nameof(IsLoginEnabled));
             }
         }
 
@@ -41,9 +43,11 @@ namespace ElJournal.ViewModels
             set
             {
                 _password = value;
-                OnPropertyChanged(nameof(Password));
+                OnPropertyChanged(nameof(IsLoginEnabled));
             }
         }
+
+        public bool IsLoginEnabled => !string.IsNullOrWhiteSpace(_login) && !string.IsNullOrWhiteSpace(_password);
 
         #endregion
 
@@ -53,12 +57,12 @@ namespace ElJournal.ViewModels
         {
             get
             {
-                return _loginUser ??
-                    (_loginUser = new DelegateCommand((obj) =>
+                return _loginUser ??= new DelegateCommand((obj) =>
                 {
                     var um = new UserModel();
                     um.LoginUser(_login, _password);
-                }));
+
+                });
             }
         }
 
@@ -66,7 +70,7 @@ namespace ElJournal.ViewModels
         {
             get
             {
-                return new DelegateCommand((obj) =>
+                return _closeApp ??= new DelegateCommand((obj) =>
                 {
                     Application.Current.Shutdown();
                 });
@@ -77,7 +81,7 @@ namespace ElJournal.ViewModels
         {
             get
             {
-                return new DelegateCommand((obj) =>
+                return _minimizeWindow ??= new DelegateCommand((obj) =>
                 {
                     Application.Current.MainWindow.WindowState = WindowState.Minimized;
                 });

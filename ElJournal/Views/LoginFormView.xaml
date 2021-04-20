@@ -98,6 +98,7 @@
                 Grid.Row="5"
                 Width="250px"
                 FontSize="18"
+                IsEnabled="{Binding IsLoginEnabled}"
                 Command="{Binding LoginUser}">
                 Войти
             </Button>
