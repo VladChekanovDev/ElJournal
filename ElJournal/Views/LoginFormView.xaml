@@ -26,7 +26,9 @@
                 <RowDefinition Height="60px"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock
+            <Grid
+                Grid.Row="0">
+                <TextBlock
                 Grid.Row="0"
                 Margin="15 0 0 0"
                 FontSize="15"
@@ -34,25 +36,26 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center">
                 ElJournal
-            </TextBlock>
-            <StackPanel
+                </TextBlock>
+                <StackPanel
                 Grid.Row="0"
                 Orientation="Horizontal"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right">
-                <Button
+                    <Button
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Command="{Binding MinimizeWindow}">
-                    <materialDesign:PackIcon 
+                        <materialDesign:PackIcon 
                         Kind="Minus"/>
-                </Button>
-                <Button
+                    </Button>
+                    <Button
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Command="{Binding CloseApp}">
-                    <materialDesign:PackIcon 
+                        <materialDesign:PackIcon 
                         Kind="Close"/>
-                </Button>
-            </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
             <Image
                 Grid.Row="1"
                 HorizontalAlignment="Center"
