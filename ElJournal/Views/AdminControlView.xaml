@@ -3,10 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ElJournal.Views"
+             xmlns:vm="clr-namespace:ElJournal.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" 
+             d:DesignWidth="800"
+             Background="White">
+    <UserControl.DataContext>
+        <vm:AdminControlViewModel/>
+    </UserControl.DataContext>
     <Grid>
-        <TextBlock Text="Админ"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition 
+                Width="150px"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Column="0"
+            Background="#673ab7">
+            <Button
+                Margin="15 15 15 15"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}">
+                <StackPanel
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon 
+                        Kind="HumanMaleBoard"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                    <TextBlock 
+                        Text="Учителя"
+                        Margin="5 0 0 0"/>
+                </StackPanel>
+            </Button>
+            <Button
+                Margin="15 15 15 15"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}">
+                <StackPanel
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon 
+                        Kind="School"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                    <TextBlock 
+                        Text="Предметы"
+                        Margin="5 0 0 0"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>
