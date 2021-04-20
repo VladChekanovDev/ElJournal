@@ -16,7 +16,6 @@ namespace ElJournal.ViewModels
         #endregion
 
         #region Команды
-
         public DelegateCommand CloseApp
         {
             get
@@ -38,7 +37,6 @@ namespace ElJournal.ViewModels
                 });
             }
         }
-
         #endregion
     }
 }

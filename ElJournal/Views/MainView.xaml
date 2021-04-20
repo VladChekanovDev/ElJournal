@@ -55,11 +55,10 @@
                 <materialDesign:PackIcon 
                         Kind="Close"/>
             </Button>
-            <Frame
-                x:Name="NavigationFrame"
-                Height="415px"
-                Grid.Row="1">
-            </Frame>
         </StackPanel>
+        <ContentControl 
+            x:Name="MainContentControl"
+            Grid.Row="1">
+        </ContentControl>
     </Grid>
 </Window>

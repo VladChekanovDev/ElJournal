@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace ElJournal.Views
 {
     /// <summary>
-    /// Логика взаимодействия для TeacherControlPanelView.xaml
+    /// Логика взаимодействия для TeacherControlView.xaml
     /// </summary>
-    public partial class TeacherControlPanelView : Page
+    public partial class TeacherControlView : UserControl
     {
-        public TeacherControlPanelView()
+        public TeacherControlView()
         {
             InitializeComponent();
         }

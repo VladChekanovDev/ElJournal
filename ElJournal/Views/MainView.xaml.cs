@@ -21,13 +21,14 @@ namespace ElJournal.Views
         public MainView()
         {
             InitializeComponent();
+
             switch (CurrentUser.UserType)
             {
                 case 0:
-                    NavigationFrame.NavigationService.Navigate(new AdminControlPanelView()) ;
+                    MainContentControl.Content = new AdminControlView();
                     break;
                 case 1:
-                    NavigationFrame.NavigationService.Navigate(new TeacherControlPanelView());
+                    MainContentControl.Content = new TeacherControlView();
                     break;
             }
         }
