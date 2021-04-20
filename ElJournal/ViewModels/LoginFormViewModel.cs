@@ -84,9 +84,10 @@ namespace ElJournal.ViewModels
         {
             get
             {
-                return _minimizeWindow ??= new DelegateCommand((obj) =>
+                return _minimizeWindow ??= new DelegateCommand((arg) =>
                 {
-                    Application.Current.MainWindow.WindowState = WindowState.Minimized;
+                    var window = (Window)arg;
+                    window.WindowState = WindowState.Minimized;
                 });
             }
         }

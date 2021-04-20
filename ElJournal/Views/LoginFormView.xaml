@@ -1,4 +1,5 @@
 ﻿<Window x:Class="ElJournal.Views.LoginFormView"
+        x:Name="Window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -44,7 +45,8 @@
                 HorizontalAlignment="Right">
                     <Button
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    Command="{Binding MinimizeWindow}">
+                    Command="{Binding MinimizeWindow}"
+                    CommandParameter="{Binding ElementName=Window}">
                         <materialDesign:PackIcon 
                         Kind="Minus"/>
                     </Button>
