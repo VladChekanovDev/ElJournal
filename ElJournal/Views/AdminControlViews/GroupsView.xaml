@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElJournal.Views.AdminControlViews"
              xmlns:vm="clr-namespace:ElJournal.ViewModels.AdminControlViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
@@ -13,6 +14,85 @@
         <vm:GroupsViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <TextBlock Text="Группы"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="425px"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Left">
+            </StackPanel>
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <Button
+                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                    Margin="10 0 0 0">
+                    <StackPanel 
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="Plus"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Добавить"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+                <Button
+                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                    Margin="15 0 0 0">
+                    <StackPanel 
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="Trash"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Удалить"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+                <Button 
+                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                    Margin="15 0 0 0">
+                    <StackPanel 
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="Edit"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Редактировать"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <DataGrid
+            Grid.Row="1"
+            CanUserAddRows="False">
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn 
+                    Header="ID"
+                    IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn
+                    Header="Название группы"
+                    Width="400"/>
+                <DataGridCheckBoxColumn 
+                    Header="Удалить"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
