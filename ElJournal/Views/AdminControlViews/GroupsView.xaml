@@ -45,6 +45,7 @@
                             HorizontalAlignment="Center"
                             Width="150px"
                             Margin="5 0 0 0"
+                            Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Hint="Поиск..."
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"/>
                     </StackPanel>
@@ -106,7 +107,7 @@
         <DataGrid
             Grid.Row="1"
             CanUserAddRows="False"
-            ItemsSource="{Binding GroupsList}"
+            ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}"
             AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 

@@ -5,6 +5,7 @@ using ElJournal.Other;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace ElJournal.ViewModels.AdminControlViewModels
@@ -14,6 +15,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         #region Поля
 
         private List<Group> _groupsList;
+        private string _filter;
         private DelegateCommand _addGroup;
         private DelegateCommand _deleteGroups;
         private DelegateCommand _editGroup;
@@ -42,6 +44,30 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             }
         }
 
+        public IEnumerable<Group> FilteredList
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(_filter))
+                {
+                    var filteredlist = GroupsList.Where(g => g.Name.ToLower().Contains(_filter.ToLower()) || g.Name.ToLower() == _filter.ToLower());
+                    return filteredlist;
+                }
+                else
+                    return GroupsList;
+            }
+        }
+
+        public string Filter
+        {
+            get => _filter;
+            set
+            {
+                _filter = value;
+                OnPropertyChanged(nameof(FilteredList));
+            }
+        }
+
         #endregion
 
         #region Команды
@@ -60,7 +86,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var gm = new GroupModel();
                         gm.Add(newgroup);
                         GroupsList = gm.GetList();
-                        OnPropertyChanged(nameof(GroupsList));
+                        OnPropertyChanged(nameof(FilteredList));
                     }
                 });
             }
@@ -81,6 +107,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         }   
                     }
                     GroupsList = gm.GetList();
+                    OnPropertyChanged(nameof(FilteredList));
                 });
             }
         }
