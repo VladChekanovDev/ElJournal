@@ -105,7 +105,7 @@
         <DataGrid
             Grid.Row="1"
             CanUserAddRows="False"
-            ItemsSource="{Binding GroupsList, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding GroupsList}"
             AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
@@ -124,7 +124,7 @@
                 <DataGridCheckBoxColumn
                     Header="Удалить"
                     Width="*"
-                    Binding="{Binding IsSelected}"/>
+                    Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

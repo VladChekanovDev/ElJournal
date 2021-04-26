@@ -19,11 +19,15 @@ namespace ElJournal.ViewModels.AdminControlViewModels
 
         #endregion
 
+        #region Конструктор
+
         public GroupsViewModel()
         {
             var gm = new GroupModel();
             _groupsList = gm.GetList();
         }
+
+        #endregion
 
         #region Свойства
 
@@ -54,6 +58,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var newgroup = new Group(vm.Name, int.Parse(vm.Course));
                         var gm = new GroupModel();
                         gm.Add(newgroup);
+                        GroupsList = gm.GetList();
+                        OnPropertyChanged(nameof(GroupsList));
                     }
                 });
             }
@@ -71,12 +77,14 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         if (item.IsSelected)
                         {
                             gm.Remove(item);
-                        }
+                        }   
                     }
+                    GroupsList = gm.GetList();
                 });
             }
         }
 
         #endregion
+
     }
 }
