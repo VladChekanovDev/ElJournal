@@ -38,6 +38,15 @@
                 Width="400"
                 FontSize="18"
                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox 
+                Grid.Row="2"
+                materialDesign:HintAssist.Hint="Введите курс"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                Width="400"
+                FontSize="18"
+                Text="{Binding Course, UpdateSourceTrigger=PropertyChanged}"/>
             <StackPanel 
                 Grid.Row="3"
                 Orientation="Horizontal"

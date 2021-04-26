@@ -10,6 +10,7 @@ namespace ElJournal.Other
         public static string LoginValidationError = "Логин может состоять из латинских букв, цифр, знака подчеркивания и точки. Длина не более 32 символа.";
         public static string PasswordValidationError = "Слабый пароль. Пароль должен содержать как минимум 1 строчную и 1 заглавную букву, 1 цифру. Длина пароля минимум 8 символов";
         public static string EmptyFieldValidationError = "Заполните все поля";
+        public static string UserNotFound = "Пользователь не найден. Неверный логин или пароль";
         public static string IncorrectInputValidationError = "Неверные данные";
         public static bool LoginValidate(string Login)
         {
@@ -53,6 +54,12 @@ namespace ElJournal.Other
             {
                 return true;
             }
+        }
+
+        public static bool StringToIntParse(string value)
+        {
+            int num;
+            return int.TryParse(value, out num);
         }
     }
 }
