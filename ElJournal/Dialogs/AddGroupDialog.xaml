@@ -6,11 +6,15 @@
         xmlns:local="clr-namespace:ElJournal.Dialogs"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        x:Name="Window"
         Title="AddGroupDialog" 
         Height="300" 
         Width="500"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local:AddGroupDialogViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -31,19 +35,23 @@
                 VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 Width="400"
-                FontSize="18"/>
+                FontSize="18"
+                Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
             <StackPanel 
                 Grid.Row="2"
                 Orientation="Horizontal"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center">
                 <Button 
-                    Content="Добавить"/>
+                    Content="Добавить"
+                    IsEnabled="{Binding IsAddButtonActive}"
+                    Command="{Binding AddGroup}"
+                    CommandParameter="{Binding ElementName=Window}"/>
                 <Button 
                     Margin="15 0 15 0"
                     Content="Отмена"
-                    IsCancel="True"
-                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsCancel="True"/>
             </StackPanel>
         </Grid>
     </Grid>
