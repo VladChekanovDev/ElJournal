@@ -42,5 +42,27 @@ namespace ElJournal.Models
                 return db.Groups.ToList();
             }
         }
+
+        public void EditGroup(int id, Group group)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                var selectedGroup = db.Groups.FirstOrDefault(g => g.GroupID == id);
+                selectedGroup.Name = group.Name;
+                selectedGroup.Course = group.Course;
+                db.SaveChanges();
+            }
+        }
+
+        public List<string> GetNamesList()
+        {
+            var groupsList = GetList();
+            List<string> names = new List<string>();
+            foreach (var item in groupsList)
+            {
+                names.Add(item.Name);
+            }
+            return names;
+        }
     }
 }

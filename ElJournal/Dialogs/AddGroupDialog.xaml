@@ -59,7 +59,7 @@
                     CommandParameter="{Binding ElementName=Window}"/>
                 <Button 
                     Margin="15 0 15 0"
-                    Content="Отмена"
+                    Content="Отменить"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     IsCancel="True"/>
             </StackPanel>

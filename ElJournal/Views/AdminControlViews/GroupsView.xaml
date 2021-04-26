@@ -86,7 +86,8 @@
                     </StackPanel>
                 </Button>
                 <Button 
-                    Margin="15 0 0 0">
+                    Margin="15 0 0 0"
+                    Command="{Binding EditGroup}">
                     <StackPanel 
                         Orientation="Horizontal">
                         <materialDesign:PackIcon 

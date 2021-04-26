@@ -16,6 +16,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         private List<Group> _groupsList;
         private DelegateCommand _addGroup;
         private DelegateCommand _deleteGroups;
+        private DelegateCommand _editGroup;
 
         #endregion
 
@@ -80,6 +81,25 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         }   
                     }
                     GroupsList = gm.GetList();
+                });
+            }
+        }
+
+        public DelegateCommand EditGroup
+        {
+            get
+            {
+                return _editGroup ??= new DelegateCommand((obj) =>
+                {
+                    var eg = new EditGroupDialog();
+                    if (eg.ShowDialog() == true)
+                    {
+                        var vm = (EditGroupDialogViewModel)eg.DataContext;
+                        var newgroup = new Group(vm.NewName, int.Parse(vm.SelectedCourse));
+                        var groupmodel = new GroupModel();
+                        groupmodel.EditGroup(vm.SelectedGroup.GroupID, newgroup);
+                        GroupsList = groupmodel.GetList();
+                    }
                 });
             }
         }
