@@ -34,5 +34,13 @@ namespace ElJournal.Models
                 return db.Groups.FirstOrDefault(g => g.GroupID == id);
             }
         }
+
+        public List<Group> GetList()
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Groups.ToList();
+            }
+        }
     }
 }

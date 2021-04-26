@@ -1,4 +1,5 @@
-﻿using ElJournal.Other;
+﻿using ElJournal.Entities;
+using ElJournal.Other;
 using ElJournal.ViewModels.AdminControlViewModels;
 using ElJournal.Views.AdminControlViews;
 using System;
@@ -11,7 +12,7 @@ namespace ElJournal.ViewModels
     class AdminControlViewModel: BaseViewModel
     {
         #region Поля
-
+        private List<Group> _groupsList;
         private UserControl _selectedUserControl;
         private DelegateCommand _changeSelection;
 

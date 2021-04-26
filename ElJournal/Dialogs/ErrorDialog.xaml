@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="ErrorDialog"
         SizeToContent="WidthAndHeight"
-        Width="300px"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
     <Grid>
@@ -20,11 +19,11 @@
             <TextBlock 
                 x:Name="ErrorTextBox"
                 Grid.Row="0"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontSize="18"
                 Margin="15"
-                />
+                Text="Сообщение об ошибке"/>
             <Button
                 x:Name="AcceptButton"
                 Grid.Row="1"

@@ -54,8 +54,8 @@
                 Grid.Column="1"
                 Orientation="Horizontal">
                 <Button
-                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                    Margin="10 0 0 0">
+                    Margin="10 0 0 0"
+                    Command="{Binding AddGroup}">
                     <StackPanel 
                         Orientation="Horizontal">
                         <materialDesign:PackIcon 
@@ -70,7 +70,6 @@
                     </StackPanel>
                 </Button>
                 <Button
-                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                     Margin="15 0 0 0">
                     <StackPanel 
                         Orientation="Horizontal">
@@ -86,7 +85,6 @@
                     </StackPanel>
                 </Button>
                 <Button 
-                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                     Margin="15 0 0 0">
                     <StackPanel 
                         Orientation="Horizontal">
