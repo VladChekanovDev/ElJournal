@@ -24,6 +24,20 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             _groupsList = gm.GetList();
         }
 
+        #region Свойства
+
+        public List<Group> GroupsList
+        {
+            get => _groupsList;
+            set
+            {
+                _groupsList = value;
+                OnPropertyChanged(nameof(GroupsList));
+            }
+        }
+
+        #endregion
+
         #region Команды
 
         public DelegateCommand AddGroup
@@ -35,7 +49,10 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                     var addgroupdialog = new AddGroupDialog();
                     if (addgroupdialog.ShowDialog() == true)
                     {
-                        var newgroup = new Group();
+                        var vm = (AddGroupDialogViewModel)addgroupdialog.DataContext;
+                        var newgroup = new Group(vm.Name, int.Parse(vm.Course));
+                        var gm = new GroupModel();
+                        gm.Add(newgroup);
                     }
                 });
             }

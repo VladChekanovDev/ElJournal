@@ -43,7 +43,7 @@ namespace ElJournal.Models
                 User user = db.Users.FirstOrDefault(u => u.Login == login && u.Pass == pass);
                 if (user == null)
                 {
-                    var errDialog = new ErrorDialog(Validation.UserNotFound);
+                    var errDialog = new ErrorDialog(Validation.UserNotFoundError);
                     errDialog.ShowDialog();
                     return false;
                 }

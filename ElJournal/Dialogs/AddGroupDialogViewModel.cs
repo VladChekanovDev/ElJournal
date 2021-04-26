@@ -51,7 +51,13 @@ namespace ElJournal.Dialogs
                 return _addGroup ??= new DelegateCommand((arg) =>
                 {
                     var window = (Window)arg;
-                    window.DialogResult = true;
+                    if (!Validation.StringToIntParse(_course))
+                    {
+                        var ed = new ErrorDialog(Validation.ImpossibleToParseError);
+                        ed.ShowDialog();
+                    }
+                    else
+                        window.DialogResult = true;
                 });
             }
         }

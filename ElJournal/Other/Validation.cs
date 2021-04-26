@@ -7,11 +7,12 @@ namespace ElJournal.Other
 {
     class Validation
     {
-        public static string LoginValidationError = "Логин может состоять из латинских букв, цифр, знака подчеркивания и точки. Длина не более 32 символа.";
-        public static string PasswordValidationError = "Слабый пароль. Пароль должен содержать как минимум 1 строчную и 1 заглавную букву, 1 цифру. Длина пароля минимум 8 символов";
-        public static string EmptyFieldValidationError = "Заполните все поля";
-        public static string UserNotFound = "Пользователь не найден. Неверный логин или пароль";
-        public static string IncorrectInputValidationError = "Неверные данные";
+        public static string LoginError = "Логин может состоять из латинских букв, цифр, знака подчеркивания и точки. Длина не более 32 символа.";
+        public static string PasswordError = "Слабый пароль. Пароль должен содержать как минимум 1 строчную и 1 заглавную букву, 1 цифру. Длина пароля минимум 8 символов";
+        public static string EmptyFieldError = "Заполните все поля";
+        public static string UserNotFoundError = "Пользователь не найден. Неверный логин или пароль";
+        public static string IncorrectInputError = "Неверные данные";
+        public static string ImpossibleToParseError = "Недопустимое значение ввода";
         public static bool LoginValidate(string Login)
         {
             Regex LoginRegex = new Regex(@"^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d._]{0,32}$");
