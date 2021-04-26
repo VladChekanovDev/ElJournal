@@ -126,6 +126,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var groupmodel = new GroupModel();
                         groupmodel.EditGroup(vm.SelectedGroup.GroupID, newgroup);
                         GroupsList = groupmodel.GetList();
+                        OnPropertyChanged(nameof(FilteredList));
                     }
                 });
             }
