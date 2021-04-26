@@ -70,7 +70,8 @@
                     </StackPanel>
                 </Button>
                 <Button
-                    Margin="15 0 0 0">
+                    Margin="15 0 0 0"
+                    Command="{Binding DeleteGroups, UpdateSourceTrigger=PropertyChanged}">
                     <StackPanel 
                         Orientation="Horizontal">
                         <materialDesign:PackIcon 
@@ -103,17 +104,27 @@
         </Grid>
         <DataGrid
             Grid.Row="1"
-            CanUserAddRows="False">
+            CanUserAddRows="False"
+            ItemsSource="{Binding GroupsList, UpdateSourceTrigger=PropertyChanged}"
+            AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
                     Header="ID"
-                    IsReadOnly="True"/>
+                    IsReadOnly="True"
+                    Binding="{Binding GroupID}"/>
                 <materialDesign:DataGridTextColumn
                     Header="Название группы"
-                    Width="400"/>
-                <DataGridCheckBoxColumn 
+                    Width="400"
+                    IsReadOnly="True"
+                    Binding="{Binding Name}"/>
+                <materialDesign:DataGridTextColumn
+                    Header="Курс"
+                    IsReadOnly="True"
+                    Binding="{Binding Course}"/>
+                <DataGridCheckBoxColumn
                     Header="Удалить"
-                    Width="*"/>
+                    Width="*"
+                    Binding="{Binding IsSelected}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

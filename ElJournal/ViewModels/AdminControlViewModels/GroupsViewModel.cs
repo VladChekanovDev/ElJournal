@@ -4,6 +4,7 @@ using ElJournal.Models;
 using ElJournal.Other;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace ElJournal.ViewModels.AdminControlViewModels
@@ -64,7 +65,14 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteGroups ??= new DelegateCommand((obj) =>
                 {
-
+                    var gm = new GroupModel();
+                    foreach(var item in GroupsList)
+                    {
+                        if (item.IsSelected)
+                        {
+                            gm.Remove(item);
+                        }
+                    }
                 });
             }
         }
