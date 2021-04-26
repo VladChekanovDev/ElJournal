@@ -61,10 +61,12 @@ namespace ElJournal.ViewModels
                 return _loginUser ??= new DelegateCommand((obj) =>
                 {
                     var um = new UserModel();
-                    um.LoginUser(_login, _password);
-                    var mv = new MainView();
-                    mv.Show();
-                    Application.Current.MainWindow.Close();
+                    if (um.LoginUser(_login, _password))
+                    {
+                        var mv = new MainView();
+                        mv.Show();
+                        Application.Current.MainWindow.Close();
+                    }
                 });
             }
         }

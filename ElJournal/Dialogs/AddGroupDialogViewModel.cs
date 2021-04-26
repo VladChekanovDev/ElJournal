@@ -11,6 +11,7 @@ namespace ElJournal.Dialogs
         #region Поля
 
         private string _name;
+        private string _course;
         private DelegateCommand _addGroup;
 
         #endregion
@@ -27,7 +28,17 @@ namespace ElJournal.Dialogs
             }
         }
 
-        public bool IsAddButtonActive => !string.IsNullOrWhiteSpace(_name);
+        public string Course
+        {
+            get => _course;
+            set
+            {
+                _course = value;
+                OnPropertyChanged(nameof(IsAddButtonActive));
+            }
+        }
+
+        public bool IsAddButtonActive => !string.IsNullOrWhiteSpace(_name) && !string.IsNullOrWhiteSpace(_course);
 
         #endregion
 

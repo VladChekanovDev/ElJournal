@@ -36,7 +36,7 @@ namespace ElJournal.Models
             }
         }
 
-        public void LoginUser(string login, string pass)
+        public bool LoginUser(string login, string pass)
         {
             using (var db = new ElJournalDbContext())
             {
@@ -45,11 +45,13 @@ namespace ElJournal.Models
                 {
                     var errDialog = new ErrorDialog("Пользователь не найден. Неверный логин или пароль");
                     errDialog.ShowDialog();
+                    return false;
                 }
                 else
                 {
                     CurrentUser.UserID = user.UserID;
                     CurrentUser.UserType = user.UserType;
+                    return true;
                 }
             }
         }

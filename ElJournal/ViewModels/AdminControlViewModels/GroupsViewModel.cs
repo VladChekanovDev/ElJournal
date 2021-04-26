@@ -33,7 +33,10 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 return _addGroup ??= new DelegateCommand((obj) =>
                 {
                     var addgroupdialog = new AddGroupDialog();
-                    addgroupdialog.ShowDialog();
+                    if (addgroupdialog.ShowDialog() == true)
+                    {
+                        var newgroup = new Group();
+                    }
                 });
             }
         }
