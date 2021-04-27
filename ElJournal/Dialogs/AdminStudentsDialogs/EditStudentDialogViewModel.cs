@@ -110,8 +110,17 @@ namespace ElJournal.Dialogs.AdminStudentsDialogs
                 {
                     if (Validation.StringToIntParse(_ID))
                     {
-                        var window = (Window)arg;
-                        window.DialogResult = true;
+                        var studentmodel = new StudentModel();
+                        if (studentmodel.GetItemByID(int.Parse(_ID)) != null)
+                        {
+                            var window = (Window)arg;
+                            window.DialogResult = true;
+                        }
+                        else
+                        {
+                            var err = new ErrorDialog(Validation.UserNotFoundError);
+                            err.ShowDialog();
+                        }
                     }
                     else
                     {
