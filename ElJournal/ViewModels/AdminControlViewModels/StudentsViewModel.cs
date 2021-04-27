@@ -1,4 +1,5 @@
-﻿using ElJournal.Entities;
+﻿using ElJournal.Dialogs.AdminStudentsDialogs;
+using ElJournal.Entities;
 using ElJournal.Models;
 using ElJournal.Other;
 using System;
@@ -79,7 +80,11 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _addStudent ??= new DelegateCommand((obj) =>
                 {
+                    var addstudentdialog = new AddStudentDialog();
+                    if (addstudentdialog.ShowDialog() == true)
+                    {
 
+                    }
                 });
             }
         }
