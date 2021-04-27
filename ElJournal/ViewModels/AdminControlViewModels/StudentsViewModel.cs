@@ -26,7 +26,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         public StudentsViewModel()
         {
             var studentmodel = new StudentModel();
-            _studentsList = studentmodel.GetList();
+            _studentsList = studentmodel.GetConnectionedList();
         }
 
         #endregion
@@ -61,7 +61,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 {
                     var filteredlist = StudentsList.Where(s => s.FirstName.ToLower().Contains(_filter.ToLower()) || s.FirstName.ToLower() == _filter.ToLower()
                     || s.LastName.ToLower().Contains(_filter.ToLower()) || s.LastName.ToLower() == _filter.ToLower()
-                    || s.Patronymic.ToLower().Contains(_filter.ToLower()) || s.Patronymic.ToLower() == _filter.ToLower());
+                    || s.Patronymic.ToLower().Contains(_filter.ToLower()) || s.Patronymic.ToLower() == _filter.ToLower()
+                    || s.Group.Name.ToLower().Contains(_filter.ToLower()) || s.Group.Name.ToLower() == _filter.ToLower());
                     return filteredlist;
                 }
                 else
@@ -98,7 +99,15 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteStudents ??= new DelegateCommand((obj) =>
                 {
-
+                    var studentmodel = new StudentModel();
+                    foreach (var item in StudentsList)
+                    {
+                        if (item.IsSelected)
+                        {
+                            studentmodel.Remove(item);
+                        }
+                    }
+                    StudentsList = studentmodel.GetList();
                 });
             }
         }

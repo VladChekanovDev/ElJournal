@@ -112,22 +112,27 @@
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
                     Header="ID"
+                    IsReadOnly="True"
                     Binding="{Binding StudentID}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Фамилия"
                     Width="140"
+                    IsReadOnly="True"
                     Binding="{Binding LastName}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Имя"
                     Width="140"
+                    IsReadOnly="True"
                     Binding="{Binding FirstName}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Отчество"
                     Width="140"
+                    IsReadOnly="True"
                     Binding="{Binding Patronymic}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Группа"
-                    Binding="{Binding GroupID}"/>
+                    IsReadOnly="True"
+                    Binding="{Binding Path=Group.Name}"/>
                 <DataGridCheckBoxColumn 
                     Header="Удалить"
                     Width="*"

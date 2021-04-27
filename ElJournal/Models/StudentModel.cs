@@ -1,5 +1,6 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,14 @@ namespace ElJournal.Models
             using (var db = new ElJournalDbContext())
             {
                 return db.Students.ToList();
+            }
+        }
+
+        public List<Student> GetConnectionedList()
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Students.Include(s => s.Group).ToList();
             }
         }
     }
