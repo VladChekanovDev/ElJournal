@@ -45,7 +45,7 @@
                             HorizontalAlignment="Center"
                             Width="150px"
                             Margin="5 0 0 0"
-                            Text="{Binding Filter}"
+                            Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Hint="Поиск..."
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"/>
                     </StackPanel>
@@ -115,15 +115,15 @@
                     Binding="{Binding StudentID}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Фамилия"
-                    Width="150"
+                    Width="140"
                     Binding="{Binding LastName}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Имя"
-                    Width="150"
+                    Width="140"
                     Binding="{Binding FirstName}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Отчество"
-                    Width="150"
+                    Width="140"
                     Binding="{Binding Patronymic}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Группа"

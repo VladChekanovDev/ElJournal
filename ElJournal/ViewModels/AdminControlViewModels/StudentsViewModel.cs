@@ -15,7 +15,6 @@ namespace ElJournal.ViewModels.AdminControlViewModels
 
         private List<Student> _studentsList;
         private string _filter;
-        private List<Student> _filteredStudents;
         private DelegateCommand _addStudent;
         private DelegateCommand _deleteStudents;
         private DelegateCommand _editStudent;
@@ -40,7 +39,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _studentsList = value;
-                OnPropertyChanged(nameof(StudentsList));
+                OnPropertyChanged(nameof(FilteredList));
             }
         }
 
@@ -83,7 +82,11 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                     var addstudentdialog = new AddStudentDialog();
                     if (addstudentdialog.ShowDialog() == true)
                     {
-
+                        var asdvm = (AddStudentDialogViewModel)addstudentdialog.DataContext;
+                        var newstudent = new Student(asdvm.FirstName, asdvm.LastName, asdvm.Patronymic, asdvm.SelectedGroup.GroupID);
+                        var studentmodel = new StudentModel();
+                        studentmodel.Add(newstudent);
+                        StudentsList = studentmodel.GetList();
                     }
                 });
             }

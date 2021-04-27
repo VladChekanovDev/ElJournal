@@ -16,5 +16,18 @@ namespace ElJournal.Entities
         public List<Mark> Marks { get; set; }
         [NotMapped]
         public bool IsSelected { get; set; }
+
+        public Student()
+        {
+
+        }
+
+        public Student(string firstName, string lastName, string patronymic, int groupID)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Patronymic = patronymic;
+            this.GroupID = groupID;
+        }
     }
 }
