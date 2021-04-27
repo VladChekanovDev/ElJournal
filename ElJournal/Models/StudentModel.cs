@@ -51,5 +51,18 @@ namespace ElJournal.Models
                 return db.Students.Include(s => s.Group).ToList();
             }
         }
+
+        public void EditStudent(int id, Student newstudent)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                var student = db.Students.FirstOrDefault(s => s.StudentID == id);
+                student.FirstName = newstudent.FirstName;
+                student.LastName = newstudent.LastName;
+                student.Patronymic = newstudent.Patronymic;
+                student.GroupID = newstudent.GroupID;
+                db.SaveChanges();
+            }
+        }
     }
 }
