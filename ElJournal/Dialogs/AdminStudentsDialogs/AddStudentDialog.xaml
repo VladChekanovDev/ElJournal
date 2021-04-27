@@ -37,7 +37,8 @@
             VerticalAlignment="Center"
             Width="400"
             materialDesign:HintAssist.Hint="Введите фамилию"
-            Text="{Binding LastName}"/>
+            Text="{Binding LastName}"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         <TextBox 
             Grid.Row="2"
             FontSize="18"
@@ -45,7 +46,8 @@
             VerticalAlignment="Center"
             Width="400"
             materialDesign:HintAssist.Hint="Введите имя"
-            Text="{Binding FirstName}"/>
+            Text="{Binding FirstName}"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         <TextBox 
             Grid.Row="3"
             FontSize="18"
@@ -53,7 +55,8 @@
             VerticalAlignment="Center"
             Width="400"
             materialDesign:HintAssist.Hint="Введите отчество"
-            Text="{Binding Patronymic}"/>
+            Text="{Binding Patronymic}"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         <ComboBox
             Grid.Row="4"
             VerticalAlignment="Center"
@@ -62,7 +65,8 @@
             Width="200"
             FontSize="18"
             ItemsSource="{Binding GroupsList}"
-            SelectedItem="{Binding SelectedGroup}">
+            SelectedItem="{Binding SelectedGroup}"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock

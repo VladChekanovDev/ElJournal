@@ -10,13 +10,14 @@
         Title="EditStudentDialog" 
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Height="450"
+        Height="525"
         Width="500">
     <Window.DataContext>
         <local:EditStudentDialogViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -30,6 +31,63 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="40"/>
-        <TextBox/>
+        <TextBox 
+            Grid.Row="1"
+            FontSize="18"
+            Width="400"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Введите ID учащегося"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox 
+            Grid.Row="2"
+            FontSize="18"
+            Width="400"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Введите новую фамилию"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox 
+            Grid.Row="3"
+            FontSize="18"
+            Width="400"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Введите новое имя"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox 
+            Grid.Row="4"
+            FontSize="18"
+            Width="400"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Введите новое отчество"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <ComboBox
+            Grid.Row="5"
+            Width="200"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите группу"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock 
+                        Text=""/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <StackPanel 
+            Grid.Row="6"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+            <Button 
+                Content="Редактировать"/>
+            <Button 
+                Margin="15 0 15 0"
+                Content="Отменить"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -43,8 +43,8 @@
                 Grid.Row="2"
                 Width="200"
                 FontSize="18"
-                Style="{StaticResource MaterialDesignComboBox}"
-                materialDesign:HintAssist.Hint="Выберите курс">
+                materialDesign:HintAssist.Hint="Выберите курс"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <TextBlock>1</TextBlock>
                 <TextBlock>2</TextBlock>
                 <TextBlock>3</TextBlock>
