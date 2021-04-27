@@ -36,28 +36,32 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="400"
-            materialDesign:HintAssist.Hint="Введите фамилию"/>
+            materialDesign:HintAssist.Hint="Введите фамилию"
+            Text="{Binding LastName}"/>
         <TextBox 
             Grid.Row="2"
             FontSize="18"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="400"
-            materialDesign:HintAssist.Hint="Введите имя"/>
+            materialDesign:HintAssist.Hint="Введите имя"
+            Text="{Binding FirstName}"/>
         <TextBox 
             Grid.Row="3"
             FontSize="18"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="400"
-            materialDesign:HintAssist.Hint="Введите отчество"/>
+            materialDesign:HintAssist.Hint="Введите отчество"
+            Text="{Binding Patronymic}"/>
         <ComboBox
             Grid.Row="4"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             materialDesign:HintAssist.Hint="Выберите группу"
             Width="150"
-            ItemsSource="{Binding GroupsList}">
+            ItemsSource="{Binding GroupsList}"
+            SelectedItem="{Binding SelectedGroup}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock
