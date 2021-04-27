@@ -4,17 +4,118 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElJournal.Views.AdminControlViews"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:vm="clr-namespace:ElJournal.ViewModels.AdminControlViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
-             d:DesignWidth="800"
+             d:DesignWidth="650"
              Background="White">
     <UserControl.DataContext>
         <vm:TeachersViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <TextBlock 
-            Text="Учителя"
-            />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50px"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="425px"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                    <Border
+                    BorderThickness="2"
+                    BorderBrush="LightGray"
+                    CornerRadius="3"
+                    Padding="5"
+                    Margin="15 0 0 0">
+                        <StackPanel 
+                        Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                            Kind="Magnify"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                            <TextBox 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Width="150px"
+                            Margin="5 0 0 0"
+                            materialDesign:HintAssist.Hint="Поиск..."
+                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal">
+                    <Button
+                    Margin="10 0 0 0">
+                        <StackPanel 
+                        Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                            Kind="Plus"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                            <TextBlock 
+                            Text="Добавить"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                    Margin="15 0 0 0">
+                        <StackPanel 
+                        Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                            Kind="Trash"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                            <TextBlock 
+                            Text="Удалить"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button 
+                    Margin="15 0 0 0">
+                        <StackPanel 
+                        Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                            Kind="Edit"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                            <TextBlock 
+                            Text="Редактировать"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <DataGrid
+            Grid.Row="1"
+            CanUserAddRows="False"
+            AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn 
+                        Header="ID"/>
+                    <DataGridTextColumn 
+                        Header="Фамилия"/>
+                    <DataGridTextColumn
+                        Header="Имя"/>
+                    <DataGridTextColumn 
+                        Header="Отчество"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </UserControl>
