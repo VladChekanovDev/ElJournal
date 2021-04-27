@@ -38,15 +38,19 @@
                 Width="400"
                 FontSize="18"
                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox 
+            <ComboBox 
                 Grid.Row="2"
-                materialDesign:HintAssist.Hint="Введите курс"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                Width="400"
-                FontSize="18"
-                Text="{Binding Course, UpdateSourceTrigger=PropertyChanged}"/>
+                Width="150"
+                Style="{StaticResource MaterialDesignComboBox}"
+                materialDesign:HintAssist.Hint="Выберите курс">
+                <TextBlock>1</TextBlock>
+                <TextBlock>2</TextBlock>
+                <TextBlock>3</TextBlock>
+                <TextBlock>4</TextBlock>
+                <ComboBox.Text>
+                    <Binding Path="Course" UpdateSourceTrigger="PropertyChanged"/>
+                </ComboBox.Text>
+            </ComboBox>
             <StackPanel 
                 Grid.Row="3"
                 Orientation="Horizontal"
