@@ -87,7 +87,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var newstudent = new Student(asdvm.FirstName, asdvm.LastName, asdvm.Patronymic, asdvm.SelectedGroup.GroupID);
                         var studentmodel = new StudentModel();
                         studentmodel.Add(newstudent);
-                        StudentsList = studentmodel.GetList();
+                        StudentsList = studentmodel.GetConnectionedList();
                     }
                 });
             }
@@ -107,7 +107,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                             studentmodel.Remove(item);
                         }
                     }
-                    StudentsList = studentmodel.GetList();
+                    StudentsList = studentmodel.GetConnectionedList();
                 });
             }
         }
