@@ -34,7 +34,8 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Width="150"
+            FontSize="18"
+            Width="200"
             ItemsSource="{Binding NamesList}"
             SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}"
             Style="{StaticResource MaterialDesignComboBox}"
@@ -55,7 +56,8 @@
             Text="{Binding NewName, UpdateSourceTrigger=PropertyChanged}"/>
         <ComboBox
             Grid.Row="3"
-            Width="150"
+            FontSize="18"
+            Width="200"
             materialDesign:HintAssist.Hint="Выберите новый курс">
             <TextBlock>1</TextBlock>
             <TextBlock>2</TextBlock>

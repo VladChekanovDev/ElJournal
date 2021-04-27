@@ -41,7 +41,8 @@
                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox 
                 Grid.Row="2"
-                Width="150"
+                Width="200"
+                FontSize="18"
                 Style="{StaticResource MaterialDesignComboBox}"
                 materialDesign:HintAssist.Hint="Выберите курс">
                 <TextBlock>1</TextBlock>

@@ -59,7 +59,8 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             materialDesign:HintAssist.Hint="Выберите группу"
-            Width="150"
+            Width="200"
+            FontSize="18"
             ItemsSource="{Binding GroupsList}"
             SelectedItem="{Binding SelectedGroup}">
             <ComboBox.ItemTemplate>
