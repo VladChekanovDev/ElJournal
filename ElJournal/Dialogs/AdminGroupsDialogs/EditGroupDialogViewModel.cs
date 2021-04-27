@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ElJournal.Dialogs
+namespace ElJournal.Dialogs.AdminGroupsDialogs
 {
     class EditGroupDialogViewModel: BaseViewModel
     {

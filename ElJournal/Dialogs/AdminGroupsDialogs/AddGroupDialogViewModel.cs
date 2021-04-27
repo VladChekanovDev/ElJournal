@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 
-namespace ElJournal.Dialogs
+namespace ElJournal.Dialogs.AdminGroupsDialogs
 {
     class AddGroupDialogViewModel: BaseViewModel
     {

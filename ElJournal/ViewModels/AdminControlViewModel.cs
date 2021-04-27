@@ -12,7 +12,6 @@ namespace ElJournal.ViewModels
     class AdminControlViewModel: BaseViewModel
     {
         #region Поля
-        private List<Group> _groupsList;
         private UserControl _selectedUserControl;
         private DelegateCommand _changeSelection;
 
