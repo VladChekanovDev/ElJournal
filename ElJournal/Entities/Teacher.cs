@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ElJournal.Entities
@@ -13,5 +14,7 @@ namespace ElJournal.Entities
         public string Patronymic { get; set; }
         public User User { get; set; }
         public List<TeacherToSubject> TeacherToSubjects { get; set; }
+        [NotMapped]
+        public bool IsSelected { get; set; }
     }
 }

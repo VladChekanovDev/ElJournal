@@ -102,18 +102,34 @@
                 </StackPanel>
             </Grid>
             <DataGrid
-            Grid.Row="1"
-            CanUserAddRows="False"
-            AutoGenerateColumns="False">
+                Grid.Row="1"
+                CanUserAddRows="False"
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding FilteredList}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn 
-                        Header="ID"/>
-                    <DataGridTextColumn 
-                        Header="Фамилия"/>
-                    <DataGridTextColumn
-                        Header="Имя"/>
-                    <DataGridTextColumn 
-                        Header="Отчество"/>
+                    <materialDesign:DataGridTextColumn 
+                        Header="ID"
+                        IsReadOnly="True"
+                        Binding="{Binding TeacherID}"/>
+                    <materialDesign:DataGridTextColumn
+                        Header="Фамилия"
+                        IsReadOnly="True"
+                        Width="150"
+                        Binding="{Binding LastName}"/>
+                    <materialDesign:DataGridTextColumn
+                        Header="Имя"
+                        IsReadOnly="True"
+                        Width="150"
+                        Binding="{Binding FirstName}"/>
+                    <materialDesign:DataGridTextColumn 
+                        Header="Отчество"
+                        IsReadOnly="True"
+                        Width="150"
+                        Binding="{Binding Patronymic}"/>
+                    <DataGridCheckBoxColumn
+                        Header="Удалить"
+                        Width="*"
+                        Binding="{Binding IsSelected}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
