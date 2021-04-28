@@ -118,7 +118,15 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _editTeacher ??= new DelegateCommand((obj) =>
                 {
-
+                    var editteacherdialog = new EditTeacherDialog();
+                    if (editteacherdialog.ShowDialog() == true)
+                    {
+                        var etdvm = (EditTeacherDialogViewModel)editteacherdialog.DataContext;
+                        var newteacher = new Teacher(etdvm.NewFirstName, etdvm.NewLastName, etdvm.NewPatrnomyic);
+                        var teachermodel = new TeacherModel();
+                        teachermodel.EditTeacher(int.Parse(etdvm.ID), newteacher);
+                        TeachersList = teachermodel.GetList();
+                    }
                 });
             }
         }

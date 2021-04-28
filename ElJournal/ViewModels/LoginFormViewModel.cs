@@ -1,4 +1,5 @@
-﻿using ElJournal.Models;
+﻿using ElJournal.Entities;
+using ElJournal.Models;
 using ElJournal.Other;
 using ElJournal.Views;
 using System;

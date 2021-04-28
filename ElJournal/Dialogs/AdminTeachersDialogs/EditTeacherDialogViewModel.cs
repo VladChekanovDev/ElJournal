@@ -27,7 +27,7 @@ namespace ElJournal.Dialogs.AdminTeachersDialogs
             set
             {
                 _ID = value;
-                OnPropertyChanged(nameof(IsEditActive);
+                OnPropertyChanged(nameof(IsEditActive));
             }
         }
 

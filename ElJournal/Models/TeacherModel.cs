@@ -42,5 +42,17 @@ namespace ElJournal.Models
                 return db.Teachers.ToList();
             }
         }
+
+        public void EditTeacher(int id, Teacher newteacher)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                var teacher = GetItemByID(id);
+                teacher.FirstName = newteacher.FirstName;
+                teacher.LastName = newteacher.LastName;
+                teacher.Patronymic = newteacher.Patronymic;
+                db.SaveChanges();
+            }
+        }
     }
 }

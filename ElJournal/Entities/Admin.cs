@@ -9,5 +9,10 @@ namespace ElJournal.Entities
         public int AdminID { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
+
+        public Admin()
+        {
+
+        }
     }
 }

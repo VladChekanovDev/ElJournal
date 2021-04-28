@@ -79,5 +79,18 @@ namespace ElJournal.Models
                 db.SaveChanges();
             }
         }
+
+        public void AddAdmin(Admin admin, User user)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                var newuser = db.Users.FirstOrDefault(u => u.Login == user.Login);
+                admin.UserID = newuser.UserID;
+                db.Admins.Add(admin);
+                db.SaveChanges();
+            }
+        }
     }
 }
