@@ -14,6 +14,9 @@ namespace ElJournal.ViewModels.AdminControlViewModels
 
         private List<Teacher> _teachersList;
         private string _filter;
+        private DelegateCommand _addTeacher;
+        private DelegateCommand _deleteTeachers;
+        private DelegateCommand _editTeacher;
 
         #endregion
 
@@ -67,7 +70,38 @@ namespace ElJournal.ViewModels.AdminControlViewModels
 
         #region Команды
 
+        public DelegateCommand AddTeacher
+        {
+            get
+            {
+                return _addTeacher ??= new DelegateCommand((obj) =>
+                {
 
+                });
+            }
+        }
+
+        public DelegateCommand DeleteTeachers
+        {
+            get
+            {
+                return _deleteTeachers ??= new DelegateCommand((obj) =>
+                {
+
+                });
+            }
+        }
+
+        public DelegateCommand EditTeacher
+        {
+            get
+            {
+                return _editTeacher ??= new DelegateCommand((obj) =>
+                {
+
+                });
+            }
+        }
 
         #endregion
     }

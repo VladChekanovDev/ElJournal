@@ -1,0 +1,110 @@
+﻿<Window x:Class="ElJournal.Dialogs.AdminTeachersDialogs.AddTeacherDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElJournal.Dialogs.AdminTeachersDialogs"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:other="clr-namespace:ElJournal.Other"
+        mc:Ignorable="d"
+        x:Name="Window"
+        Title="AddTeacherDialog" 
+        Height="600" 
+        Width="500"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Window.DataContext>
+        <local:AddTeacherDialogViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            FontSize="40"
+            Text="Добавление"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+        <TextBox 
+            Grid.Row="1"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            materialDesign:HintAssist.Hint="Введите фамилию"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox 
+            Grid.Row="2"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            materialDesign:HintAssist.Hint="Введите имя"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox 
+            Grid.Row="3"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            materialDesign:HintAssist.Hint="Введите отчество"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox 
+            Grid.Row="4"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            materialDesign:HintAssist.Hint="Введите логин"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <PasswordBox
+            Grid.Row="5"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            materialDesign:HintAssist.Hint="Введите пароль"
+            other:PasswordBoxAssistant.BindPassword="True"
+            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+            <other:PasswordBoxAssistant.BoundPassword>
+                <Binding Mode="TwoWay" >
+                </Binding>
+            </other:PasswordBoxAssistant.BoundPassword>
+        </PasswordBox>
+        <PasswordBox
+            Grid.Row="6"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            materialDesign:HintAssist.Hint="Подтвердите пароль"
+            other:PasswordBoxAssistant.BindPassword="True"
+            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+            <other:PasswordBoxAssistant.BoundPassword>
+                <Binding Mode="TwoWay" >
+                </Binding>
+            </other:PasswordBoxAssistant.BoundPassword>
+        </PasswordBox>
+        <StackPanel 
+            Grid.Row="7"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button 
+                Content="Добавить"/>
+            <Button 
+                Margin="15 0 15 0"
+                Content="Отменить"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>

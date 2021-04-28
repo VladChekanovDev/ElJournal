@@ -32,8 +32,4 @@
     </Resource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dialogs\AdminTeachersDialogs\" />
-  </ItemGroup>
-
 </Project>
