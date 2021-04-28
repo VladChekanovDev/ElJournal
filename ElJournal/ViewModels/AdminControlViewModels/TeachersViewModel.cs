@@ -81,6 +81,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                     if (addteacherdialog.ShowDialog() == true)
                     {
                         var atdvm = (AddTeacherDialogViewModel)addteacherdialog.DataContext;
+
                     }
                 });
             }

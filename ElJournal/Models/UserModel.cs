@@ -55,5 +55,16 @@ namespace ElJournal.Models
                 }
             }
         }
+
+        public bool IsUserExist(string login)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                if (db.Users.FirstOrDefault(u => u.Login == login) != null)
+                    return true;
+                else
+                    return false;
+            }
+        }
     }
 }

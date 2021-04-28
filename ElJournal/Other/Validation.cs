@@ -14,6 +14,7 @@ namespace ElJournal.Other
         public static string IncorrectInputError = "Неверные данные";
         public static string PasswordsDoNotMatchError = "Пароли не совпадают. Попробуйте снова";
         public static string ImpossibleToParseError = "Недопустимое значение ввода";
+        public static string UserExistsError = "Пользователь с указанным логином уже существует. Попробуйте другой логин";
         public static bool LoginValidate(string Login)
         {
             Regex LoginRegex = new Regex(@"^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d._]{0,32}$");

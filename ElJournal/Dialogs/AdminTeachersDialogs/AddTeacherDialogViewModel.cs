@@ -1,4 +1,5 @@
 ﻿
+using ElJournal.Models;
 using ElJournal.Other;
 using System;
 using System.Collections.Generic;
@@ -103,8 +104,17 @@ namespace ElJournal.Dialogs.AdminTeachersDialogs
                         {
                             if (Validation.IncorrectInputValidate(_password, _confirmPassword))
                             {
-                                var window = (Window)arg;
-                                window.DialogResult = true;
+                                var usermodel = new UserModel();
+                                if (usermodel.IsUserExist(_login))
+                                {
+                                    var err = new ErrorDialog(Validation.UserExistsError);
+                                    err.ShowDialog();
+                                }
+                                else
+                                {
+                                    var window = (Window)arg;
+                                    window.DialogResult = true;
+                                }
                             }
                             else
                             {
