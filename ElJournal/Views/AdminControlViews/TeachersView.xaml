@@ -71,7 +71,8 @@
                         </StackPanel>
                     </Button>
                     <Button
-                        Margin="15 0 0 0">
+                        Margin="15 0 0 0"
+                        Command="{Binding DeleteTeachers}">
                         <StackPanel 
                             Orientation="Horizontal">
                             <materialDesign:PackIcon 
@@ -86,7 +87,8 @@
                         </StackPanel>
                     </Button>
                     <Button 
-                        Margin="15 0 0 0">
+                        Margin="15 0 0 0"
+                        Command="{Binding EditTeacher}">
                         <StackPanel 
                             Orientation="Horizontal">
                             <materialDesign:PackIcon 
@@ -106,7 +108,7 @@
                 Grid.Row="1"
                 CanUserAddRows="False"
                 AutoGenerateColumns="False"
-                ItemsSource="{Binding FilteredList}">
+                ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}">
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn 
                         Header="ID"
@@ -130,7 +132,7 @@
                     <DataGridCheckBoxColumn
                         Header="Удалить"
                         Width="*"
-                        Binding="{Binding IsSelected}"/>
+                        Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

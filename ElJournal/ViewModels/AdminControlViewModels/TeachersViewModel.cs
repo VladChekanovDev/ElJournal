@@ -98,7 +98,16 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteTeachers ??= new DelegateCommand((obj) =>
                 {
-
+                    var teachermodel = new TeacherModel();
+                    var usermodel = new UserModel();
+                    foreach(var item in TeachersList)
+                    {
+                        if (item.IsSelected)
+                        {
+                            usermodel.Remove(usermodel.GetItemByID(item.UserID));
+                        }
+                    }
+                    TeachersList = teachermodel.GetList();
                 });
             }
         }
