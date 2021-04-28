@@ -12,6 +12,7 @@ namespace ElJournal.Other
         public static string EmptyFieldError = "Заполните все поля";
         public static string UserNotFoundError = "Пользователь не найден. Попробуйте снова";
         public static string IncorrectInputError = "Неверные данные";
+        public static string PasswordsDoNotMatchError = "Пароли не совпадают. Попробуйте снова";
         public static string ImpossibleToParseError = "Недопустимое значение ввода";
         public static bool LoginValidate(string Login)
         {

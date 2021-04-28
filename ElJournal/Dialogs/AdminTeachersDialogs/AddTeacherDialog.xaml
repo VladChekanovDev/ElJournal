@@ -40,7 +40,8 @@
             HorizontalAlignment="Center"
             Width="400"
             materialDesign:HintAssist.Hint="Введите фамилию"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="2"
             FontSize="18"
@@ -48,7 +49,8 @@
             HorizontalAlignment="Center"
             Width="400"
             materialDesign:HintAssist.Hint="Введите имя"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="3"
             FontSize="18"
@@ -56,7 +58,8 @@
             HorizontalAlignment="Center"
             Width="400"
             materialDesign:HintAssist.Hint="Введите отчество"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Patrnoymic, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="4"
             FontSize="18"
@@ -64,7 +67,8 @@
             HorizontalAlignment="Center"
             Width="400"
             materialDesign:HintAssist.Hint="Введите логин"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
         <PasswordBox
             Grid.Row="5"
             FontSize="18"
@@ -75,7 +79,7 @@
             other:PasswordBoxAssistant.BindPassword="True"
             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
             <other:PasswordBoxAssistant.BoundPassword>
-                <Binding Mode="TwoWay" >
+                <Binding Mode="TwoWay" Path="Password" UpdateSourceTrigger="PropertyChanged">
                 </Binding>
             </other:PasswordBoxAssistant.BoundPassword>
         </PasswordBox>
@@ -89,7 +93,7 @@
             other:PasswordBoxAssistant.BindPassword="True"
             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
             <other:PasswordBoxAssistant.BoundPassword>
-                <Binding Mode="TwoWay" >
+                <Binding Mode="TwoWay" Path="ConfirmPassword" UpdateSourceTrigger="PropertyChanged">
                 </Binding>
             </other:PasswordBoxAssistant.BoundPassword>
         </PasswordBox>
@@ -99,7 +103,10 @@
             HorizontalAlignment="Right"
             Orientation="Horizontal">
             <Button 
-                Content="Добавить"/>
+                Content="Добавить"
+                IsEnabled="{Binding IsAddActive}"
+                Command="{Binding AddTeacher}"
+                CommandParameter="{Binding ElementName=Window}"/>
             <Button 
                 Margin="15 0 15 0"
                 Content="Отменить"

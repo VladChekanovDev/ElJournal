@@ -1,4 +1,5 @@
-﻿using ElJournal.Entities;
+﻿using ElJournal.Dialogs.AdminTeachersDialogs;
+using ElJournal.Entities;
 using ElJournal.Models;
 using ElJournal.Other;
 using System;
@@ -76,7 +77,11 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _addTeacher ??= new DelegateCommand((obj) =>
                 {
-
+                    var addteacherdialog = new AddTeacherDialog();
+                    if (addteacherdialog.ShowDialog() == true)
+                    {
+                        var atdvm = (AddTeacherDialogViewModel)addteacherdialog.DataContext;
+                    }
                 });
             }
         }
