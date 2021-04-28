@@ -47,7 +47,7 @@ namespace ElJournal.Models
         {
             using (var db = new ElJournalDbContext())
             {
-                var teacher = GetItemByID(id);
+                var teacher = db.Teachers.FirstOrDefault(t => t.TeacherID == id);
                 teacher.FirstName = newteacher.FirstName;
                 teacher.LastName = newteacher.LastName;
                 teacher.Patronymic = newteacher.Patronymic;
