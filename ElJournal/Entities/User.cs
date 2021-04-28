@@ -18,5 +18,17 @@ namespace ElJournal.Entities
         */
         [Required] public Admin Admin { get; set; }
         [Required] public Teacher Teacher { get; set; }
+
+        public User()
+        {
+
+        }
+
+        public User(string login, string pass, int usertype)
+        {
+            Login = login;
+            Pass = pass;
+            UserType = usertype;
+        }
     }
 }

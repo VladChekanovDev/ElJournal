@@ -39,7 +39,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _teachersList = value;
-                OnPropertyChanged(nameof(TeachersList));
+                OnPropertyChanged(nameof(FilteredList));
             }
         }
 
@@ -81,7 +81,12 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                     if (addteacherdialog.ShowDialog() == true)
                     {
                         var atdvm = (AddTeacherDialogViewModel)addteacherdialog.DataContext;
-
+                        var newuser = new User(atdvm.Login, atdvm.Password, 1);
+                        var newteacher = new Teacher(atdvm.FirstName, atdvm.LastName, atdvm.Patrnoymic);
+                        var usermodel = new UserModel();
+                        usermodel.AddTeacher(newteacher, newuser);
+                        var teachermodel = new TeacherModel();
+                        TeachersList = teachermodel.GetList();
                     }
                 });
             }

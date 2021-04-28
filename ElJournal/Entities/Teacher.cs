@@ -16,5 +16,17 @@ namespace ElJournal.Entities
         public List<TeacherToSubject> TeacherToSubjects { get; set; }
         [NotMapped]
         public bool IsSelected { get; set; }
+
+        public Teacher()
+        {
+
+        }
+
+        public Teacher(string firstname, string lastname, string patronymic)
+        {
+            this.FirstName = firstname;
+            this.LastName = lastname;
+            this.Patronymic = patronymic;
+        }
     }
 }

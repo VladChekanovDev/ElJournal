@@ -66,5 +66,18 @@ namespace ElJournal.Models
                     return false;
             }
         }
+
+        public void AddTeacher(Teacher teacher, User user)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                var newuser = db.Users.FirstOrDefault(u => u.Login == user.Login);
+                teacher.UserID = newuser.UserID;
+                db.Teachers.Add(teacher);
+                db.SaveChanges();
+            }
+        }
     }
 }
