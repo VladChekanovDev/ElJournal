@@ -47,6 +47,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             get => _filter;
             set
             {
+                _filter = value;
                 OnPropertyChanged(nameof(FilteredList));
             }
         }

@@ -9,6 +9,7 @@ namespace ElJournal.Entities
     {
         public int SubjectID { get; set; }
         public string Name { get; set; }
+        public string ShortName { get; set; }
         public List<Mark> Marks { get; set; }
         public List<TeacherToSubject> TeacherToSubjects { get; set; }
         [NotMapped]
