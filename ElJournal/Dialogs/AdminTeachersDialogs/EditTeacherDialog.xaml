@@ -46,7 +46,7 @@
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите новое имя преподавателя"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding NewFirstName, UpdateSourceTrigger=PropertyChanged}"/>/>
+            Text="{Binding NewFirstName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="3"
             Width="400"
@@ -55,7 +55,7 @@
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите новую фамилию преподавателя"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding NewLastName, UpdateSourceTrigger=PropertyChanged}"/>/>
+            Text="{Binding NewLastName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="4"
             Width="400"
@@ -64,14 +64,16 @@
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите новое отчество преподавателя"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding NewPatrnomyic, UpdateSourceTrigger=PropertyChanged}"/>/>
+            Text="{Binding NewPatrnomyic, UpdateSourceTrigger=PropertyChanged}"/>
         <StackPanel
             Grid.Row="5"
             Orientation="Horizontal"
             VerticalAlignment="Center"
             HorizontalAlignment="Right">
             <Button 
-                Content="Редактировать"/>
+                Content="Редактировать"
+                IsEnabled="{Binding IsEditActive}"
+                Command="{Binding EditTeacher}"/>
             <Button 
                 Margin="15 0 15 0"
                 IsCancel="True"
