@@ -36,7 +36,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите ID преподавателя"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="2"
             Width="400"
@@ -44,7 +45,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите новое имя преподавателя"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding NewFirstName, UpdateSourceTrigger=PropertyChanged}"/>/>
         <TextBox 
             Grid.Row="3"
             Width="400"
@@ -52,7 +54,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите новую фамилию преподавателя"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding NewLastName, UpdateSourceTrigger=PropertyChanged}"/>/>
         <TextBox 
             Grid.Row="4"
             Width="400"
@@ -60,7 +63,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите новое отчество преподавателя"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding NewPatrnomyic, UpdateSourceTrigger=PropertyChanged}"/>/>
         <StackPanel
             Grid.Row="5"
             Orientation="Horizontal"
