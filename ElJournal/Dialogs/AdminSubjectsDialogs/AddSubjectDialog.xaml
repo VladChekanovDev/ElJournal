@@ -35,7 +35,8 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите сокращенное название"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding ShortName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
             Grid.Row="2"
             Width="300"
@@ -43,20 +44,23 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите полное название предмета"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
         <StackPanel 
             Grid.Row="3"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Orientation="Horizontal">
             <Button 
-                Content="Добавить"/>
+                Content="Добавить"
+                IsEnabled="{Binding IsAddActive}"
+                Command="{Binding AddSubject}"
+                CommandParameter="{Binding ElementName=Window}"/>
             <Button
                 Margin="15 0 15 0"
                 IsCancel="True"
                 Content="Отменить"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                CommandParameter="{Binding ElementName=Window}"/>
+                Style="{StaticResource MaterialDesignFlatButton}"/>
         </StackPanel>
     </Grid>
 </Window>
