@@ -118,7 +118,11 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                     var editsubjectdialog = new EditSubjectDialog();
                     if (editsubjectdialog.ShowDialog() == true)
                     {
-
+                        var esdvm = (EditSubjectDialogViewModel)editsubjectdialog.DataContext;
+                        var newsubject = new Subject(esdvm.NewShortName, esdvm.NewName);
+                        var subjectmodel = new SubjectModel();
+                        subjectmodel.EditSubject(int.Parse(esdvm.ID), newsubject);
+                        SubjectsList = subjectmodel.GetList();
                     }
                 });
             }
