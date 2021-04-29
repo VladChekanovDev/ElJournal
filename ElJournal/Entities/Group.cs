@@ -13,6 +13,9 @@ namespace ElJournal.Entities
         public List<Student> Students { get; set; }
 
         [NotMapped]
+        public bool IsEditSelected { get; set; }
+
+        [NotMapped]
         public bool IsSelected { get; set; }
 
         public Group()

@@ -13,6 +13,13 @@
     <UserControl.DataContext>
         <vm:GroupsViewModel/>
     </UserControl.DataContext>
+    <!--<UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CenterAligned" TargetType="CheckBox">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50px"/>
@@ -116,13 +123,20 @@
                     Binding="{Binding GroupID}"/>
                 <materialDesign:DataGridTextColumn
                     Header="Название группы"
-                    Width="400"
+                    Width="300"
                     IsReadOnly="True"
                     Binding="{Binding Name}"/>
                 <materialDesign:DataGridTextColumn
                     Header="Курс"
                     IsReadOnly="True"
                     Binding="{Binding Course}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton></RadioButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridCheckBoxColumn
                     Header="Удалить"
                     Width="*"

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace ElJournal.ViewModels.AdminControlViewModels
 {
@@ -117,7 +118,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         {
             get
             {
-                return _editGroup ??= new DelegateCommand((obj) =>
+                return _editGroup ??= new DelegateCommand((arg) =>
                 {
                     var eg = new EditGroupDialog();
                     if (eg.ShowDialog() == true)
