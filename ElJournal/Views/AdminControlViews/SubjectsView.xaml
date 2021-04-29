@@ -117,7 +117,7 @@
                 <materialDesign:DataGridTextColumn 
                     Header="Полное название"
                     IsReadOnly="True"
-                    Width="400"
+                    Width="380"
                     Binding="{Binding Name}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Сокращенное"

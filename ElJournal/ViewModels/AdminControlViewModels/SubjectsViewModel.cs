@@ -96,7 +96,15 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteSubjects ??= new DelegateCommand((obj) =>
                 {
-
+                    var subjectmodel = new SubjectModel();
+                    foreach (var item in SubjectsList)
+                    {
+                        if (item.IsSelected)
+                        {
+                            subjectmodel.Remove(item);
+                        }
+                    }
+                    SubjectsList = subjectmodel.GetList();
                 });
             }
         }
