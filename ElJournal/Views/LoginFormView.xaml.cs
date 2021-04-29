@@ -23,6 +23,10 @@ namespace ElJournal.Views
         public LoginFormView()
         {
             InitializeComponent();
+            //var um = new UserModel();
+            //var user = new User("admin", "505800", 0);
+            //var admin = new Admin();
+            //um.AddAdmin(admin, user);
         }
     }
 }

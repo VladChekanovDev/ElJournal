@@ -14,5 +14,16 @@ namespace ElJournal.Entities
         public List<TeacherToSubject> TeacherToSubjects { get; set; }
         [NotMapped]
         public bool IsSelected { get; set; }
+
+        public Subject()
+        {
+
+        }
+
+        public Subject(string shortname, string name)
+        {
+            ShortName = shortname;
+            Name = name;
+        }
     }
 }

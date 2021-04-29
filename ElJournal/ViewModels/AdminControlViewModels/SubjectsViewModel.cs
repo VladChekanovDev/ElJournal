@@ -1,4 +1,5 @@
-﻿using ElJournal.Entities;
+﻿using ElJournal.Dialogs.AdminSubjectsDialogs;
+using ElJournal.Entities;
 using ElJournal.Models;
 using ElJournal.Other;
 using System;
@@ -75,7 +76,15 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _addSubject ??= new DelegateCommand((obj) =>
                 {
-
+                    var addsubjectdialog = new AddSubjectDialog();
+                    if (addsubjectdialog.ShowDialog() == true)
+                    {
+                        var asdvm = (AddSubjectDialogViewModel)addsubjectdialog.DataContext;
+                        var newsubject = new Subject(asdvm.ShortName, asdvm.Name);
+                        var subjectmodel = new SubjectModel();
+                        subjectmodel.Add(newsubject);
+                        SubjectsList = subjectmodel.GetList();
+                    }
                 });
             }
         }
