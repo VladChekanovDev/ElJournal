@@ -59,7 +59,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 if (!string.IsNullOrWhiteSpace(_filter))
                 {
-                    return _subjectsList.Where(s => s.Name.ToLower().Contains(_filter.ToLower()) || s.Name.ToLower() == _filter.ToLower());
+                    return _subjectsList.Where(s => s.Name.ToLower().Contains(_filter.ToLower()) || s.Name.ToLower() == _filter.ToLower()
+                    && s.ShortName.ToLower().Contains(_filter.ToLower()) || s.ShortName.ToLower() == _filter.ToLower());
                 }
                 else
                     return _subjectsList;

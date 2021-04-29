@@ -115,14 +115,15 @@
                     IsReadOnly="True"
                     Binding="{Binding SubjectID}"/>
                 <materialDesign:DataGridTextColumn 
-                    Header="Сокращенное название"
-                    IsReadOnly="True"
-                    Binding="{Binding ShortName}"/>
-                <materialDesign:DataGridTextColumn 
                     Header="Полное название"
                     IsReadOnly="True"
-                    Width="300"
+                    Width="400"
                     Binding="{Binding Name}"/>
+                <materialDesign:DataGridTextColumn 
+                    Header="Сокращенное"
+                    Width="Auto"
+                    IsReadOnly="True"
+                    Binding="{Binding ShortName}"/>
                 <DataGridCheckBoxColumn 
                     Header="Удалить"
                     Width="*"
