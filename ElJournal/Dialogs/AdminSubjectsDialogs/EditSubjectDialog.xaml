@@ -4,9 +4,73 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElJournal.Dialogs.AdminSubjectsDialogs"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="EditSubjectDialog" Height="450" Width="800">
+        x:Name="Window"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="EditSubjectDialog" 
+        Height="375" 
+        Width="500">
+    <Window.DataContext>
+        <local:EditSubjectDialogViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="40"
+            Text="Редактирование"/>
+        <TextBox 
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Введите ID предмета"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox 
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Введите сокращенное название предмета"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding NewShortName, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox 
+            Grid.Row="3"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="400"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Введите полное название предмета"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding NewName, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel
+            Grid.Row="4"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                IsEnabled="{Binding IsEditActive}"
+                Command="{Binding EditSubject}"
+                CommandParameter="{Binding ElementName=Window}"
+                Content="Редактировать"/>
+            <Button
+                Margin="15 0 15 0"
+                Content="Отменить"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
     </Grid>
 </Window>

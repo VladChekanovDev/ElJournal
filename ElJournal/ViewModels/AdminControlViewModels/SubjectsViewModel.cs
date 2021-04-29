@@ -115,7 +115,11 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _editSubject ??= new DelegateCommand((obj) =>
                 {
+                    var editsubjectdialog = new EditSubjectDialog();
+                    if (editsubjectdialog.ShowDialog() == true)
+                    {
 
+                    }
                 });
             }
         }
