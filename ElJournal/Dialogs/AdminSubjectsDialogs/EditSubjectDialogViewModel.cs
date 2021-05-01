@@ -11,7 +11,6 @@ namespace ElJournal.Dialogs.AdminSubjectsDialogs
     {
         #region Поля
 
-        private string _ID;
         private string _newShortName;
         private string _newName;
         private DelegateCommand _editSubject;
@@ -19,16 +18,6 @@ namespace ElJournal.Dialogs.AdminSubjectsDialogs
         #endregion
 
         #region Свойства
-
-        public string ID
-        {
-            get => _ID;
-            set
-            {
-                _ID = value;
-                OnPropertyChanged(nameof(IsEditActive));
-            }
-        }
 
         public string NewShortName
         {
@@ -50,8 +39,7 @@ namespace ElJournal.Dialogs.AdminSubjectsDialogs
             }
         }
 
-        public bool IsEditActive => !string.IsNullOrWhiteSpace(_ID)
-            && !string.IsNullOrWhiteSpace(_newShortName)
+        public bool IsEditActive => !string.IsNullOrWhiteSpace(_newShortName)
             && !string.IsNullOrWhiteSpace(_newName);
 
         #endregion
@@ -64,25 +52,8 @@ namespace ElJournal.Dialogs.AdminSubjectsDialogs
             {
                 return _editSubject ??= new DelegateCommand((arg) =>
                 {
-                    if (Validation.StringToIntParse(_ID))
-                    {
-                        var subjectmodel = new SubjectModel();
-                        if (subjectmodel.GetItemByID(int.Parse(_ID)) != null)
-                        {
-                            var window = (Window)arg;
-                            window.DialogResult = true;
-                        }
-                        else
-                        {
-                            var err = new ErrorDialog(Validation.SubjectNotFound);
-                            err.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-                        var err = new ErrorDialog(Validation.ImpossibleToParseError);
-                        err.ShowDialog();
-                    }
+                    var window = (Window)arg;
+                    window.DialogResult = true;
                 });
             }
         }

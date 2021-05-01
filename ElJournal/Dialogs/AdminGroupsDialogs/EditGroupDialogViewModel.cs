@@ -13,8 +13,6 @@ namespace ElJournal.Dialogs.AdminGroupsDialogs
     {
         #region Поля
 
-        private List<Group> _namesList;
-        private Group _selectedGroup;
         private string _newName;
         private string _selectedCourse;
         private DelegateCommand _editGroup;
@@ -25,33 +23,11 @@ namespace ElJournal.Dialogs.AdminGroupsDialogs
 
         public EditGroupDialogViewModel()
         {
-            var gm = new GroupModel();
-            _namesList = gm.GetList();
         }
 
         #endregion
 
         #region Свойства
-
-        public List<Group> NamesList
-        {
-            get => _namesList;
-            set
-            {
-                _namesList = value;
-                OnPropertyChanged(nameof(NamesList));
-            }
-        }
-
-        public Group SelectedGroup
-        {
-            get => _selectedGroup;
-            set
-            {
-                _selectedGroup = value;
-                OnPropertyChanged(nameof(IsEditActivated));
-            }
-        }
 
         public string NewName
         {
@@ -73,7 +49,7 @@ namespace ElJournal.Dialogs.AdminGroupsDialogs
             }
         }
 
-        public bool IsEditActivated => SelectedGroup != null && !string.IsNullOrWhiteSpace(_newName) && !string.IsNullOrWhiteSpace(_selectedCourse);
+        public bool IsEditActivated => !string.IsNullOrWhiteSpace(_newName) && !string.IsNullOrWhiteSpace(_selectedCourse);
         #endregion
 
         #region Команды

@@ -12,7 +12,6 @@ namespace ElJournal.Dialogs.AdminStudentsDialogs
     {
         #region Поля
 
-        private string _ID;
         private string _newLastName;
         private string _newFirstName;
         private string _newPatronymic;
@@ -41,16 +40,6 @@ namespace ElJournal.Dialogs.AdminStudentsDialogs
             {
                 _groupsList = value;
                 OnPropertyChanged(nameof(GroupsList));
-            }
-        }
-
-        public string ID
-        {
-            get => _ID;
-            set
-            {
-                _ID = value;
-                OnPropertyChanged(nameof(IsEditActivated));
             }
         }
 
@@ -94,7 +83,7 @@ namespace ElJournal.Dialogs.AdminStudentsDialogs
             }
         }
 
-        public bool IsEditActivated => !string.IsNullOrEmpty(_ID) && !string.IsNullOrEmpty(_newFirstName)
+        public bool IsEditActivated => !string.IsNullOrEmpty(_newFirstName)
             && !string.IsNullOrEmpty(_newLastName) && !string.IsNullOrEmpty(_newPatronymic)
             && _newGroup != null;
 
@@ -108,25 +97,8 @@ namespace ElJournal.Dialogs.AdminStudentsDialogs
             {
                 return _editStudent ??= new DelegateCommand((arg) =>
                 {
-                    if (Validation.StringToIntParse(_ID))
-                    {
-                        var studentmodel = new StudentModel();
-                        if (studentmodel.GetItemByID(int.Parse(_ID)) != null)
-                        {
-                            var window = (Window)arg;
-                            window.DialogResult = true;
-                        }
-                        else
-                        {
-                            var err = new ErrorDialog(Validation.UserNotFoundError);
-                            err.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-                        var err = new ErrorDialog(Validation.ImpossibleToParseError);
-                        err.ShowDialog();
-                    }
+                    var window = (Window)arg;
+                    window.DialogResult = true;
                 });
             }
         }

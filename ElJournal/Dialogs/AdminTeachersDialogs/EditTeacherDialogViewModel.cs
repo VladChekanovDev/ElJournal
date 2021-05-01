@@ -11,7 +11,6 @@ namespace ElJournal.Dialogs.AdminTeachersDialogs
     {
         #region Поля
 
-        private string _ID;
         private string _newFirstName;
         private string _newLastName;
         private string _newPatronymic;
@@ -20,16 +19,6 @@ namespace ElJournal.Dialogs.AdminTeachersDialogs
         #endregion
 
         #region Свойства
-
-        public string ID
-        {
-            get => _ID;
-            set
-            {
-                _ID = value;
-                OnPropertyChanged(nameof(IsEditActive));
-            }
-        }
 
         public string NewFirstName
         {
@@ -61,7 +50,7 @@ namespace ElJournal.Dialogs.AdminTeachersDialogs
             }
         }
 
-        public bool IsEditActive => !string.IsNullOrWhiteSpace(_ID) && !string.IsNullOrWhiteSpace(_newFirstName)
+        public bool IsEditActive => !string.IsNullOrWhiteSpace(_newFirstName)
             && !string.IsNullOrWhiteSpace(_newLastName) && !string.IsNullOrWhiteSpace(_newPatronymic);
 
         #endregion
@@ -74,25 +63,8 @@ namespace ElJournal.Dialogs.AdminTeachersDialogs
             {
                 return _editTeacher ??= new DelegateCommand((arg) =>
                 {
-                    if (Validation.StringToIntParse(_ID))
-                    {
-                        var teachermodel = new TeacherModel();
-                        if (teachermodel.GetItemByID(int.Parse(_ID)) != null)
-                        {
-                            var window = (Window)arg;
-                            window.DialogResult = true;
-                        }
-                        else
-                        {
-                            var err = new ErrorDialog(Validation.UserNotFoundError);
-                            err.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-                        var err = new ErrorDialog(Validation.ImpossibleToParseError);
-                        err.ShowDialog();
-                    }
+                    var window = (Window)arg;
+                    window.DialogResult = true;
                 });
             }
         }
