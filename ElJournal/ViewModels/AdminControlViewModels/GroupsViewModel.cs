@@ -17,6 +17,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         #region Поля
 
         private List<Group> _groupsList;
+        private Group _selectedGroup;
         private string _filter;
         private DelegateCommand _addGroup;
         private DelegateCommand _deleteGroups;
@@ -42,7 +43,17 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _groupsList = value;
-                OnPropertyChanged(nameof(GroupsList));
+                OnPropertyChanged(nameof(FilteredList));
+            }
+        }
+
+        public Group SelectedGroup
+        {
+            get => _selectedGroup;
+            set
+            {
+                _selectedGroup = value;
+                OnPropertyChanged(nameof(SelectedGroup));
             }
         }
 
@@ -94,22 +105,15 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             }
         }
 
-        public DelegateCommand DeleteGroups
+        public DelegateCommand DeleteGroup
         {
             get
             {
                 return _deleteGroups ??= new DelegateCommand((obj) =>
                 {
-                    var gm = new GroupModel();
-                    foreach(var item in GroupsList)
-                    {
-                        if (item.IsSelected)
-                        {
-                            gm.Remove(item);
-                        }   
-                    }
-                    GroupsList = gm.GetList();
-                    OnPropertyChanged(nameof(FilteredList));
+                    var groupmodel = new GroupModel();
+                    groupmodel.Remove(_selectedGroup);
+                    GroupsList = groupmodel.GetList();
                 });
             }
         }
@@ -128,7 +132,6 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var groupmodel = new GroupModel();
                         groupmodel.EditGroup(vm.SelectedGroup.GroupID, newgroup);
                         GroupsList = groupmodel.GetList();
-                        OnPropertyChanged(nameof(FilteredList));
                     }
                 });
             }
