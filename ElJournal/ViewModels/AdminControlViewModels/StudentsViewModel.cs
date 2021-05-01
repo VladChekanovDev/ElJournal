@@ -129,7 +129,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var esdvm = (EditStudentDialogViewModel)editstudentdialog.DataContext;
                         var newstudent = new Student(esdvm.NewFirstName, esdvm.NewLastName, esdvm.NewPatronymic, esdvm.NewGroup.GroupID);
                         var studentmodel = new StudentModel();
-                        studentmodel.EditStudent(_selectedStudent.GroupID, newstudent);
+                        studentmodel.EditStudent(_selectedStudent.StudentID, newstudent);
                         StudentsList = studentmodel.GetConnectionedList();
                     }
                 });

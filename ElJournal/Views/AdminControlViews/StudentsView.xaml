@@ -72,7 +72,7 @@
                 </Button>
                 <Button
                     Margin="15 0 0 0"
-                    Command="{Binding DeleteStudents}">
+                    Command="{Binding DeleteStudent}">
                     <StackPanel 
                         Orientation="Horizontal">
                         <materialDesign:PackIcon 
