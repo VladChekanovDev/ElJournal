@@ -10,14 +10,13 @@
         Title="EditStudentDialog" 
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Height="525"
+        Height="450"
         Width="500">
     <Window.DataContext>
         <local:EditStudentDialogViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -37,20 +36,11 @@
             Width="400"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            materialDesign:HintAssist.Hint="Введите ID учащегося"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox 
-            Grid.Row="2"
-            FontSize="18"
-            Width="400"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Введите новую фамилию"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             Text="{Binding NewLastName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
-            Grid.Row="3"
+            Grid.Row="2"
             FontSize="18"
             Width="400"
             HorizontalAlignment="Center"
@@ -59,7 +49,7 @@
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             Text="{Binding NewFirstName, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox 
-            Grid.Row="4"
+            Grid.Row="3"
             FontSize="18"
             Width="400"
             HorizontalAlignment="Center"
@@ -68,7 +58,7 @@
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             Text="{Binding NewPatronymic, UpdateSourceTrigger=PropertyChanged}"/>
         <ComboBox
-            Grid.Row="5"
+            Grid.Row="4"
             Width="200"
             FontSize="18"
             materialDesign:HintAssist.Hint="Выберите группу"
@@ -83,7 +73,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <StackPanel 
-            Grid.Row="6"
+            Grid.Row="5"
             Orientation="Horizontal"
             VerticalAlignment="Center"
             HorizontalAlignment="Right">

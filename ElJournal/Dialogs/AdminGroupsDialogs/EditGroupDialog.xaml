@@ -22,7 +22,6 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock 
             Grid.Row="0"
@@ -30,25 +29,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="40"/>
-        <ComboBox 
-            Grid.Row="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="18"
-            Width="200"
-            ItemsSource="{Binding NamesList}"
-            SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}"
-            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-            materialDesign:HintAssist.Hint="Выберите группу">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock 
-                        Text="{Binding Path=Name}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
         <TextBox 
-            Grid.Row="2"
+            Grid.Row="1"
             Width="400"
             FontSize="18"
             HorizontalAlignment="Center"
@@ -57,7 +39,7 @@
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             Text="{Binding NewName, UpdateSourceTrigger=PropertyChanged}"/>
         <ComboBox
-            Grid.Row="3"
+            Grid.Row="2"
             FontSize="18"
             Width="200"
             materialDesign:HintAssist.Hint="Выберите новый курс"
@@ -71,7 +53,7 @@
             </ComboBox.Text>
         </ComboBox>
         <StackPanel 
-            Grid.Row="4"
+            Grid.Row="3"
             Orientation="Horizontal"
             HorizontalAlignment="Right"
             VerticalAlignment="Center">
