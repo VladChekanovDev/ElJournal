@@ -124,7 +124,7 @@
                     Binding="{Binding GroupID}"/>
                 <materialDesign:DataGridTextColumn
                     Header="Название группы"
-                    Width="400"
+                    Width="500"
                     IsReadOnly="True"
                     Binding="{Binding Name}"/>
                 <materialDesign:DataGridTextColumn

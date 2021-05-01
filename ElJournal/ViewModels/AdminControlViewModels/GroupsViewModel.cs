@@ -130,7 +130,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var vm = (EditGroupDialogViewModel)eg.DataContext;
                         var newgroup = new Group(vm.NewName, int.Parse(vm.SelectedCourse));
                         var groupmodel = new GroupModel();
-                        groupmodel.EditGroup(vm.SelectedGroup.GroupID, newgroup);
+                        groupmodel.EditGroup(_selectedGroup.GroupID, newgroup);
                         GroupsList = groupmodel.GetList();
                     }
                 });

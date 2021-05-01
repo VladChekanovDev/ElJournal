@@ -15,6 +15,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
 
         private List<Student> _studentsList;
         private string _filter;
+        private Student _selectedStudent;
         private DelegateCommand _addStudent;
         private DelegateCommand _deleteStudents;
         private DelegateCommand _editStudent;
@@ -40,6 +41,16 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 _studentsList = value;
                 OnPropertyChanged(nameof(FilteredList));
+            }
+        }
+
+        public Student SelectedStudent
+        {
+            get => _selectedStudent;
+            set
+            {
+                _selectedStudent = value;
+                OnPropertyChanged();
             }
         }
 
@@ -93,20 +104,14 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             }
         }
 
-        public DelegateCommand DeleteStudents
+        public DelegateCommand DeleteStudent
         {
             get
             {
                 return _deleteStudents ??= new DelegateCommand((obj) =>
                 {
                     var studentmodel = new StudentModel();
-                    foreach (var item in StudentsList)
-                    {
-                        if (item.IsSelected)
-                        {
-                            studentmodel.Remove(item);
-                        }
-                    }
+                    studentmodel.Remove(_selectedStudent);
                     StudentsList = studentmodel.GetConnectionedList();
                 });
             }
@@ -124,7 +129,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var esdvm = (EditStudentDialogViewModel)editstudentdialog.DataContext;
                         var newstudent = new Student(esdvm.NewFirstName, esdvm.NewLastName, esdvm.NewPatronymic, esdvm.NewGroup.GroupID);
                         var studentmodel = new StudentModel();
-                        studentmodel.EditStudent(int.Parse(esdvm.ID), newstudent);
+                        studentmodel.EditStudent(_selectedStudent.GroupID, newstudent);
                         StudentsList = studentmodel.GetConnectionedList();
                     }
                 });

@@ -108,7 +108,8 @@
             Grid.Row="1"
             CanUserAddRows="False"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}">
+            ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedStudent}">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
                     Header="ID"
@@ -116,27 +117,24 @@
                     Binding="{Binding StudentID}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Фамилия"
-                    Width="140"
+                    Width="150"
                     IsReadOnly="True"
                     Binding="{Binding LastName}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Имя"
-                    Width="140"
+                    Width="150"
                     IsReadOnly="True"
                     Binding="{Binding FirstName}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Отчество"
-                    Width="140"
+                    Width="150"
                     IsReadOnly="True"
                     Binding="{Binding Patronymic}"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Группа"
                     IsReadOnly="True"
-                    Binding="{Binding Path=Group.Name}"/>
-                <DataGridCheckBoxColumn 
-                    Header="Удалить"
                     Width="*"
-                    Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"/>
+                    Binding="{Binding Path=Group.Name}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

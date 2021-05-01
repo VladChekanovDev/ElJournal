@@ -15,6 +15,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
 
         private List<Teacher> _teachersList;
         private string _filter;
+        private Teacher _selectedTeacher;
         private DelegateCommand _addTeacher;
         private DelegateCommand _deleteTeachers;
         private DelegateCommand _editTeacher;
@@ -40,6 +41,16 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 _teachersList = value;
                 OnPropertyChanged(nameof(FilteredList));
+            }
+        }
+
+        public Teacher SelectedTeacher
+        {
+            get => _selectedTeacher;
+            set
+            {
+                _selectedTeacher = value;
+                OnPropertyChanged();
             }
         }
 
@@ -92,7 +103,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             }
         }
 
-        public DelegateCommand DeleteTeachers
+        public DelegateCommand DeleteTeacher
         {
             get
             {
@@ -100,13 +111,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 {
                     var teachermodel = new TeacherModel();
                     var usermodel = new UserModel();
-                    foreach(var item in TeachersList)
-                    {
-                        if (item.IsSelected)
-                        {
-                            usermodel.Remove(usermodel.GetItemByID(item.UserID));
-                        }
-                    }
+                    usermodel.Remove(usermodel.GetItemByID(_selectedTeacher.UserID));
                     TeachersList = teachermodel.GetList();
                 });
             }
@@ -124,7 +129,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var etdvm = (EditTeacherDialogViewModel)editteacherdialog.DataContext;
                         var newteacher = new Teacher(etdvm.NewFirstName, etdvm.NewLastName, etdvm.NewPatrnomyic);
                         var teachermodel = new TeacherModel();
-                        teachermodel.EditTeacher(int.Parse(etdvm.ID), newteacher);
+                        teachermodel.EditTeacher(_selectedTeacher.TeacherID, newteacher);
                         TeachersList = teachermodel.GetList();
                     }
                 });

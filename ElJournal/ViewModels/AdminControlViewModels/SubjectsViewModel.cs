@@ -15,6 +15,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
 
         private List<Subject> _subjectsList;
         private string _filter;
+        private Subject _selectedSubject;
         private DelegateCommand _addSubject;
         private DelegateCommand _deleteSubjects;
         private DelegateCommand _editSubject;
@@ -50,6 +51,16 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 _filter = value;
                 OnPropertyChanged(nameof(FilteredList));
+            }
+        }
+
+        public Subject SelectedSubject
+        {
+            get => _selectedSubject;
+            set
+            {
+                _selectedSubject = value;
+                OnPropertyChanged();
             }
         }
 
@@ -90,20 +101,14 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             }
         }
 
-        public DelegateCommand DeleteSubjects
+        public DelegateCommand DeleteSubject
         {
             get
             {
                 return _deleteSubjects ??= new DelegateCommand((obj) =>
                 {
                     var subjectmodel = new SubjectModel();
-                    foreach (var item in SubjectsList)
-                    {
-                        if (item.IsSelected)
-                        {
-                            subjectmodel.Remove(item);
-                        }
-                    }
+                    subjectmodel.Remove(_selectedSubject);
                     SubjectsList = subjectmodel.GetList();
                 });
             }
@@ -121,7 +126,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var esdvm = (EditSubjectDialogViewModel)editsubjectdialog.DataContext;
                         var newsubject = new Subject(esdvm.NewShortName, esdvm.NewName);
                         var subjectmodel = new SubjectModel();
-                        subjectmodel.EditSubject(int.Parse(esdvm.ID), newsubject);
+                        subjectmodel.EditSubject(_selectedSubject.SubjectID, newsubject);
                         SubjectsList = subjectmodel.GetList();
                     }
                 });
