@@ -166,10 +166,18 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         if (addsubjectdialog.ShowDialog() == true)
                         {
                             var asdvm = (AddSubjectDialogViewModel)addsubjectdialog.DataContext;
-                            var newtts = new TeacherToSubject(asdvm.SelectedSubject.SubjectID, _selectedTeacher.TeacherID);
                             var teachertosubjectmodel = new TeacherToSubjectModel();
-                            teachertosubjectmodel.Add(newtts);
-                            TeachersList = new TeacherModel().GetConnectionedList();
+                            if (!teachertosubjectmodel.ConnectionExists(_selectedTeacher.TeacherID, asdvm.SelectedSubject.SubjectID))
+                            {
+                                var newtts = new TeacherToSubject(asdvm.SelectedSubject.SubjectID, _selectedTeacher.TeacherID);
+                                teachertosubjectmodel.Add(newtts);
+                                TeachersList = new TeacherModel().GetConnectionedList();
+                            }
+                            else
+                            {
+                                var err = new ErrorDialog(Validation.ConnectionExist);
+                                err.ShowDialog();
+                            }
                         }
                     }
                     else

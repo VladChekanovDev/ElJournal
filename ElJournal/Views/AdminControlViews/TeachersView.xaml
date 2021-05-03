@@ -163,7 +163,7 @@
                     <materialDesign:DataGridComboBoxColumn 
                         Header="Предметы"
                         Width="*"
-                        ItemsSource="{Binding Path=FilteredList.TeacherToSubjects}">
+                        ItemsSource="{Binding Path=FilteredList}">
                     </materialDesign:DataGridComboBoxColumn>
                 </DataGrid.Columns>
             </DataGrid>

@@ -35,6 +35,16 @@ namespace ElJournal.Models
             }
         }
 
+        public bool ConnectionExists(int teacherid, int subjectid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                if (db.TeacherToSubjects.FirstOrDefault(tts => tts.SubjectID == subjectid && tts.TeacherID == teacherid) != null)
+                    return true;
+                else return false;
+            }
+        }
+
         //public void CreateConnection(int teacherid, int subjectid)
         //{
         //    using (var db = new ElJournalDbContext())
