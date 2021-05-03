@@ -113,9 +113,13 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 {
                     if (_selectedGroup != null)
                     {
-                        var groupmodel = new GroupModel();
-                        groupmodel.Remove(_selectedGroup);
-                        GroupsList = groupmodel.GetList();
+                        var confirmdialog = new ConfirmDeleteDialog();
+                        if (confirmdialog.ShowDialog() == true)
+                        {
+                            var groupmodel = new GroupModel();
+                            groupmodel.Remove(_selectedGroup);
+                            GroupsList = groupmodel.GetList();
+                        }
                     }
                     else
                     {

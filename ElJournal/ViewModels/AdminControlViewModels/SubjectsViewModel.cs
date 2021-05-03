@@ -110,9 +110,12 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 {
                     if (_selectedSubject != null)
                     {
-                        var subjectmodel = new SubjectModel();
-                        subjectmodel.Remove(_selectedSubject);
-                        SubjectsList = subjectmodel.GetList();
+                        if (new ConfirmDeleteDialog().ShowDialog() == true)
+                        {
+                            var subjectmodel = new SubjectModel();
+                            subjectmodel.Remove(_selectedSubject);
+                            SubjectsList = subjectmodel.GetList();
+                        }
                     }
                     else
                     {

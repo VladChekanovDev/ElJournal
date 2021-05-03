@@ -113,9 +113,13 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 {
                     if (_selectedStudent != null)
                     {
-                        var studentmodel = new StudentModel();
-                        studentmodel.Remove(_selectedStudent);
-                        StudentsList = studentmodel.GetConnectionedList();
+                        var confirmdialog = new ConfirmDeleteDialog();
+                        if (confirmdialog.ShowDialog() == true)
+                        {
+                            var studentmodel = new StudentModel();
+                            studentmodel.Remove(_selectedStudent);
+                            StudentsList = studentmodel.GetConnectionedList();
+                        }   
                     }
                     else
                     {

@@ -124,10 +124,13 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 {
                     if (_selectedTeacher != null)
                     {
-                        var teachermodel = new TeacherModel();
-                        var usermodel = new UserModel();
-                        usermodel.Remove(usermodel.GetItemByID(_selectedTeacher.UserID));
-                        TeachersList = teachermodel.GetConnectionedList();
+                        if (new ConfirmDeleteDialog().ShowDialog() == true)
+                        {
+                            var teachermodel = new TeacherModel();
+                            var usermodel = new UserModel();
+                            usermodel.Remove(usermodel.GetItemByID(_selectedTeacher.UserID));
+                            TeachersList = teachermodel.GetConnectionedList();
+                        }
                     }
                     else
                     {
