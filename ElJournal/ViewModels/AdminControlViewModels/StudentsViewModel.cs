@@ -1,4 +1,5 @@
-﻿using ElJournal.Dialogs.AdminStudentsDialogs;
+﻿using ElJournal.Dialogs;
+using ElJournal.Dialogs.AdminStudentsDialogs;
 using ElJournal.Entities;
 using ElJournal.Models;
 using ElJournal.Other;
@@ -110,9 +111,17 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteStudents ??= new DelegateCommand((obj) =>
                 {
-                    var studentmodel = new StudentModel();
-                    studentmodel.Remove(_selectedStudent);
-                    StudentsList = studentmodel.GetConnectionedList();
+                    if (_selectedStudent != null)
+                    {
+                        var studentmodel = new StudentModel();
+                        studentmodel.Remove(_selectedStudent);
+                        StudentsList = studentmodel.GetConnectionedList();
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
+                    }
                 });
             }
         }
@@ -123,14 +132,22 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _editStudent ??= new DelegateCommand((obj) =>
                 {
-                    var editstudentdialog = new EditStudentDialog();
-                    if (editstudentdialog.ShowDialog() == true)
+                    if (_selectedStudent != null)
                     {
-                        var esdvm = (EditStudentDialogViewModel)editstudentdialog.DataContext;
-                        var newstudent = new Student(esdvm.NewFirstName, esdvm.NewLastName, esdvm.NewPatronymic, esdvm.NewGroup.GroupID);
-                        var studentmodel = new StudentModel();
-                        studentmodel.EditStudent(_selectedStudent.StudentID, newstudent);
-                        StudentsList = studentmodel.GetConnectionedList();
+                        var editstudentdialog = new EditStudentDialog();
+                        if (editstudentdialog.ShowDialog() == true)
+                        {
+                            var esdvm = (EditStudentDialogViewModel)editstudentdialog.DataContext;
+                            var newstudent = new Student(esdvm.NewFirstName, esdvm.NewLastName, esdvm.NewPatronymic, esdvm.NewGroup.GroupID);
+                            var studentmodel = new StudentModel();
+                            studentmodel.EditStudent(_selectedStudent.StudentID, newstudent);
+                            StudentsList = studentmodel.GetConnectionedList();
+                        }
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
                     }
                 });
             }

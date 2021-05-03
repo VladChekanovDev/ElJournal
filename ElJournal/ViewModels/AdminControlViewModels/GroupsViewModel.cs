@@ -111,9 +111,17 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteGroups ??= new DelegateCommand((obj) =>
                 {
-                    var groupmodel = new GroupModel();
-                    groupmodel.Remove(_selectedGroup);
-                    GroupsList = groupmodel.GetList();
+                    if (_selectedGroup != null)
+                    {
+                        var groupmodel = new GroupModel();
+                        groupmodel.Remove(_selectedGroup);
+                        GroupsList = groupmodel.GetList();
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
+                    }
                 });
             }
         }
@@ -124,14 +132,22 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _editGroup ??= new DelegateCommand((arg) =>
                 {
-                    var eg = new EditGroupDialog();
-                    if (eg.ShowDialog() == true)
+                    if (_selectedGroup != null)
                     {
-                        var vm = (EditGroupDialogViewModel)eg.DataContext;
-                        var newgroup = new Group(vm.NewName, int.Parse(vm.SelectedCourse));
-                        var groupmodel = new GroupModel();
-                        groupmodel.EditGroup(_selectedGroup.GroupID, newgroup);
-                        GroupsList = groupmodel.GetList();
+                        var eg = new EditGroupDialog();
+                        if (eg.ShowDialog() == true)
+                        {
+                            var vm = (EditGroupDialogViewModel)eg.DataContext;
+                            var newgroup = new Group(vm.NewName, int.Parse(vm.SelectedCourse));
+                            var groupmodel = new GroupModel();
+                            groupmodel.EditGroup(_selectedGroup.GroupID, newgroup);
+                            GroupsList = groupmodel.GetList();
+                        }
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
                     }
                 });
             }

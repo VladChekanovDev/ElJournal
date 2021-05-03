@@ -1,4 +1,5 @@
-﻿using ElJournal.Dialogs.AdminSubjectsDialogs;
+﻿using ElJournal.Dialogs;
+using ElJournal.Dialogs.AdminSubjectsDialogs;
 using ElJournal.Entities;
 using ElJournal.Models;
 using ElJournal.Other;
@@ -107,9 +108,17 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteSubjects ??= new DelegateCommand((obj) =>
                 {
-                    var subjectmodel = new SubjectModel();
-                    subjectmodel.Remove(_selectedSubject);
-                    SubjectsList = subjectmodel.GetList();
+                    if (_selectedSubject != null)
+                    {
+                        var subjectmodel = new SubjectModel();
+                        subjectmodel.Remove(_selectedSubject);
+                        SubjectsList = subjectmodel.GetList();
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
+                    }
                 });
             }
         }
@@ -120,14 +129,22 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _editSubject ??= new DelegateCommand((obj) =>
                 {
-                    var editsubjectdialog = new EditSubjectDialog();
-                    if (editsubjectdialog.ShowDialog() == true)
+                    if (_selectedSubject != null)
                     {
-                        var esdvm = (EditSubjectDialogViewModel)editsubjectdialog.DataContext;
-                        var newsubject = new Subject(esdvm.NewShortName, esdvm.NewName);
-                        var subjectmodel = new SubjectModel();
-                        subjectmodel.EditSubject(_selectedSubject.SubjectID, newsubject);
-                        SubjectsList = subjectmodel.GetList();
+                        var editsubjectdialog = new EditSubjectDialog();
+                        if (editsubjectdialog.ShowDialog() == true)
+                        {
+                            var esdvm = (EditSubjectDialogViewModel)editsubjectdialog.DataContext;
+                            var newsubject = new Subject(esdvm.NewShortName, esdvm.NewName);
+                            var subjectmodel = new SubjectModel();
+                            subjectmodel.EditSubject(_selectedSubject.SubjectID, newsubject);
+                            SubjectsList = subjectmodel.GetList();
+                        }
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
                     }
                 });
             }

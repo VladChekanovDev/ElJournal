@@ -1,4 +1,5 @@
-﻿using ElJournal.Dialogs.AdminTeachersDialogs;
+﻿using ElJournal.Dialogs;
+using ElJournal.Dialogs.AdminTeachersDialogs;
 using ElJournal.Entities;
 using ElJournal.Models;
 using ElJournal.Other;
@@ -109,10 +110,18 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _deleteTeachers ??= new DelegateCommand((obj) =>
                 {
-                    var teachermodel = new TeacherModel();
-                    var usermodel = new UserModel();
-                    usermodel.Remove(usermodel.GetItemByID(_selectedTeacher.UserID));
-                    TeachersList = teachermodel.GetList();
+                    if (_selectedTeacher != null)
+                    {
+                        var teachermodel = new TeacherModel();
+                        var usermodel = new UserModel();
+                        usermodel.Remove(usermodel.GetItemByID(_selectedTeacher.UserID));
+                        TeachersList = teachermodel.GetList();
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
+                    }
                 });
             }
         }
@@ -123,14 +132,22 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             {
                 return _editTeacher ??= new DelegateCommand((obj) =>
                 {
-                    var editteacherdialog = new EditTeacherDialog();
-                    if (editteacherdialog.ShowDialog() == true)
+                    if (_selectedTeacher != null)
                     {
-                        var etdvm = (EditTeacherDialogViewModel)editteacherdialog.DataContext;
-                        var newteacher = new Teacher(etdvm.NewFirstName, etdvm.NewLastName, etdvm.NewPatrnomyic);
-                        var teachermodel = new TeacherModel();
-                        teachermodel.EditTeacher(_selectedTeacher.TeacherID, newteacher);
-                        TeachersList = teachermodel.GetList();
+                        var editteacherdialog = new EditTeacherDialog();
+                        if (editteacherdialog.ShowDialog() == true)
+                        {
+                            var etdvm = (EditTeacherDialogViewModel)editteacherdialog.DataContext;
+                            var newteacher = new Teacher(etdvm.NewFirstName, etdvm.NewLastName, etdvm.NewPatrnomyic);
+                            var teachermodel = new TeacherModel();
+                            teachermodel.EditTeacher(_selectedTeacher.TeacherID, newteacher);
+                            TeachersList = teachermodel.GetList();
+                        }
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
                     }
                 });
             }
