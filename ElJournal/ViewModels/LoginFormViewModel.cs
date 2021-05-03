@@ -67,6 +67,7 @@ namespace ElJournal.ViewModels
                         var mv = new MainView();
                         mv.Show();
                         Application.Current.MainWindow.Close();
+                        Application.Current.MainWindow = mv;
                     }
                 });
             }

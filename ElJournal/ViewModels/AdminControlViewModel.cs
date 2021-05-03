@@ -1,10 +1,12 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
 using ElJournal.ViewModels.AdminControlViewModels;
+using ElJournal.Views;
 using ElJournal.Views.AdminControlViews;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ElJournal.ViewModels
@@ -14,6 +16,7 @@ namespace ElJournal.ViewModels
         #region Поля
         private UserControl _selectedUserControl;
         private DelegateCommand _changeSelection;
+        private DelegateCommand _logout;
 
         #endregion
 
@@ -55,6 +58,22 @@ namespace ElJournal.ViewModels
                             SelectedUserControl = new GroupsView();
                             break;
                     }
+                });
+            }
+        }
+
+        public DelegateCommand Logout
+        {
+            get
+            {
+                return _logout ??= new DelegateCommand((arg) =>
+                {
+                    var logform = new LoginFormView();
+                    CurrentUser.UserID = 0;
+                    CurrentUser.UserType = null;
+                    logform.Show();
+                    Application.Current.MainWindow.Close();
+                    Application.Current.MainWindow = logform;
                 });
             }
         }

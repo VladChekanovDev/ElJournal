@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:ElJournal.Views"
              xmlns:vm="clr-namespace:ElJournal.ViewModels"
              mc:Ignorable="d" 
+             x:Name="Window"
              d:DesignHeight="415" 
              d:DesignWidth="800"
              Background="White">
@@ -19,82 +20,112 @@
                 Width="150px"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel
-            Grid.Column="0"
-            Background="#673ab7">
-            <Button
-                x:Name="Teachers"
-                Margin="15 15 15 15"
-                Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                Command="{Binding ChangeSelection}"
-                CommandParameter="{Binding ElementName=Teachers}">
-                <StackPanel
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon 
-                        Kind="HumanMaleBoard"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-                    <TextBlock 
-                        Text="Учителя"
-                        Margin="5 0 0 0"/>
-                </StackPanel>
-            </Button>
-            <Button
-                x:Name="Subjects"
-                Margin="15 15 15 15"
-                Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                Command="{Binding ChangeSelection}"
-                CommandParameter="{Binding ElementName=Subjects}">
-                <StackPanel
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon 
-                        Kind="School"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-                    <TextBlock 
-                        Text="Предметы"
-                        Margin="5 0 0 0"/>
-                </StackPanel>
-            </Button>
-            <Button
-                x:Name="Groups"
-                Margin="15 15 15 15"
-                Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                Command="{Binding ChangeSelection}"
-                CommandParameter="{Binding ElementName=Groups}">
-                <StackPanel
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon 
-                        Kind="AccountGroup"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-                    <TextBlock 
-                        Text="Группы"
-                        Margin="5 0 0 0"/>
-                </StackPanel>
-            </Button>
-            <Button
-                x:Name="Students"
-                Margin="15 15 15 15"
-                Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                Command="{Binding ChangeSelection}"
-                CommandParameter="{Binding ElementName=Students}">
-                <StackPanel
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon 
-                        Kind="HumanChild"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-                    <TextBlock 
-                        Text="Учащиеся"
-                        Margin="5 0 0 0"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+        <Grid 
+            Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition 
+                    Height="60"/>
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="0"
+                Background="#673ab7">
+                <Button
+                    x:Name="Teachers"
+                    Margin="15 15 15 15"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Command="{Binding ChangeSelection}"
+                    CommandParameter="{Binding ElementName=Teachers}">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="HumanMaleBoard"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Учителя"
+                            Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+                <Button
+                    x:Name="Subjects"
+                    Margin="15 15 15 15"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Command="{Binding ChangeSelection}"
+                    CommandParameter="{Binding ElementName=Subjects}">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="School"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Предметы"
+                            Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+                <Button
+                    x:Name="Groups"
+                    Margin="15 15 15 15"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Command="{Binding ChangeSelection}"
+                    CommandParameter="{Binding ElementName=Groups}">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="AccountGroup"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Группы"
+                            Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+                <Button
+                    x:Name="Students"
+                    Margin="15 15 15 15"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Command="{Binding ChangeSelection}"
+                    CommandParameter="{Binding ElementName=Students}">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="HumanChild"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Учащиеся"
+                            Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Background="#482880">
+                <Button 
+                    Margin="0 15 0 0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="120"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Command="{Binding Logout}">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Kind="LogoutVariant"/>
+                        <TextBlock 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="5 0 0 0"
+                            Text="Выход"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
         <ContentControl
             Grid.Column="1"
-            Content="{Binding SelectedUserControl}">
-            
-        </ContentControl>
+            Content="{Binding SelectedUserControl}"/>
     </Grid>
 </UserControl>
