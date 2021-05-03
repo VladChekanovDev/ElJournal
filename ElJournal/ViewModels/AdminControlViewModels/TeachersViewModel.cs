@@ -20,6 +20,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         private DelegateCommand _addTeacher;
         private DelegateCommand _deleteTeachers;
         private DelegateCommand _editTeacher;
+        private DelegateCommand _addSubject;
 
         #endregion
 
@@ -28,7 +29,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         public TeachersViewModel()
         {
             var teachermodel = new TeacherModel();
-            _teachersList = teachermodel.GetList();
+            _teachersList = teachermodel.GetConnectionedList();
         }
 
         #endregion
@@ -142,6 +143,33 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                             var teachermodel = new TeacherModel();
                             teachermodel.EditTeacher(_selectedTeacher.TeacherID, newteacher);
                             TeachersList = teachermodel.GetList();
+                        }
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
+                    }
+                });
+            }
+        }
+
+        public DelegateCommand AddSubject
+        {
+            get
+            {
+                return _addSubject ??= new DelegateCommand((obj) =>
+                {
+                    if (_selectedTeacher != null)
+                    {
+                        var addsubjectdialog = new AddSubjectDialog();
+                        if (addsubjectdialog.ShowDialog() == true)
+                        {
+                            var asdvm = (AddSubjectDialogViewModel)addsubjectdialog.DataContext;
+                            var newtts = new TeacherToSubject(asdvm.SelectedSubject.SubjectID, _selectedTeacher.TeacherID);
+                            var teachertosubjectmodel = new TeacherToSubjectModel();
+                            teachertosubjectmodel.Add(newtts);
+                            TeachersList = new TeacherModel().GetConnectionedList();
                         }
                     }
                     else

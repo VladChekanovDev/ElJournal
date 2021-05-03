@@ -34,5 +34,14 @@ namespace ElJournal.Models
                 return db.TeacherToSubjects.FirstOrDefault(u => u.TeacherToSubjectID == id);
             }
         }
+
+        //public void CreateConnection(int teacherid, int subjectid)
+        //{
+        //    using (var db = new ElJournalDbContext())
+        //    {
+        //        var teachertosubject = new TeacherToSubject(subjectid, teacherid);
+        //        Add(teachertosubject);
+        //    }
+        //}
     }
 }

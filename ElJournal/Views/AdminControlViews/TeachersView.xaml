@@ -17,6 +17,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50px"/>
+                <RowDefinition Height="50px"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid>
@@ -53,7 +54,8 @@
                 </StackPanel>
                 <StackPanel
                     Grid.Column="1"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
                     <Button
                         Margin="10 0 0 0"
                         Command="{Binding AddTeacher}">
@@ -71,7 +73,7 @@
                         </StackPanel>
                     </Button>
                     <Button
-                        Margin="15 0 0 0"
+                        Margin="15 0 15 0"
                         Command="{Binding DeleteTeacher}">
                         <StackPanel 
                             Orientation="Horizontal">
@@ -86,8 +88,20 @@
                                 Margin="5 0 0 0"/>
                         </StackPanel>
                     </Button>
+                </StackPanel>
+            </Grid>
+            <Grid 
+                Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="425px"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel 
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
                     <Button 
-                        Margin="15 0 0 0"
+                        Margin="10 0 0 0"
                         Command="{Binding EditTeacher}">
                         <StackPanel 
                             Orientation="Horizontal">
@@ -102,10 +116,26 @@
                                 Margin="5 0 0 0"/>
                         </StackPanel>
                     </Button>
+                    <Button
+                        Margin="15 0 15 0"
+                        Command="{Binding AddSubject}">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Kind="AccountMultipleAdd"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            <TextBlock 
+                                Text="Добавить предмет"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Grid>
             <DataGrid
-                Grid.Row="1"
+                Grid.Row="2"
                 CanUserAddRows="False"
                 AutoGenerateColumns="False"
                 ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}"
@@ -118,18 +148,23 @@
                     <materialDesign:DataGridTextColumn
                         Header="Фамилия"
                         IsReadOnly="True"
-                        Width="200"
+                        Width="150"
                         Binding="{Binding LastName}"/>
                     <materialDesign:DataGridTextColumn
                         Header="Имя"
                         IsReadOnly="True"
-                        Width="200"
+                        Width="150"
                         Binding="{Binding FirstName}"/>
                     <materialDesign:DataGridTextColumn 
                         Header="Отчество"
                         IsReadOnly="True"
-                        Width="*"
+                        Width="150"
                         Binding="{Binding Patronymic}"/>
+                    <materialDesign:DataGridComboBoxColumn 
+                        Header="Предметы"
+                        Width="*"
+                        ItemsSource="{Binding Path=FilteredList.TeacherToSubjects}">
+                    </materialDesign:DataGridComboBoxColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
