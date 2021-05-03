@@ -5,8 +5,10 @@ using ElJournal.Models;
 using ElJournal.Other;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace ElJournal.ViewModels.AdminControlViewModels
 {
@@ -14,13 +16,14 @@ namespace ElJournal.ViewModels.AdminControlViewModels
     {
         #region Поля
 
-        private List<Teacher> _teachersList;
+        private ObservableCollection<Teacher> _teachersList;
         private string _filter;
         private Teacher _selectedTeacher;
         private DelegateCommand _addTeacher;
         private DelegateCommand _deleteTeachers;
         private DelegateCommand _editTeacher;
         private DelegateCommand _addSubject;
+        private DelegateCommand _openSubjectsDialog;
 
         #endregion
 
@@ -30,13 +33,21 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         {
             var teachermodel = new TeacherModel();
             _teachersList = teachermodel.GetConnectionedList();
+            //foreach(var item in _teachersList)
+            //{
+            //    MessageBox.Show($"{item.LastName}");
+            //    foreach (var seconditem in item.TeacherToSubjects)
+            //    {
+            //        MessageBox.Show($"{seconditem.Subject.ShortName}");
+            //    }
+            //}
         }
 
         #endregion
 
         #region Свойства
 
-        public List<Teacher> TeachersList
+        public ObservableCollection<Teacher> TeachersList
         {
             get => _teachersList;
             set
@@ -99,7 +110,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var usermodel = new UserModel();
                         usermodel.AddTeacher(newteacher, newuser);
                         var teachermodel = new TeacherModel();
-                        TeachersList = teachermodel.GetList();
+                        TeachersList = teachermodel.GetConnectionedList();
                     }
                 });
             }
@@ -116,7 +127,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var teachermodel = new TeacherModel();
                         var usermodel = new UserModel();
                         usermodel.Remove(usermodel.GetItemByID(_selectedTeacher.UserID));
-                        TeachersList = teachermodel.GetList();
+                        TeachersList = teachermodel.GetConnectionedList();
                     }
                     else
                     {
@@ -142,7 +153,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                             var newteacher = new Teacher(etdvm.NewFirstName, etdvm.NewLastName, etdvm.NewPatrnomyic);
                             var teachermodel = new TeacherModel();
                             teachermodel.EditTeacher(_selectedTeacher.TeacherID, newteacher);
-                            TeachersList = teachermodel.GetList();
+                            TeachersList = teachermodel.GetConnectionedList();
                         }
                     }
                     else
@@ -185,6 +196,18 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
                         err.ShowDialog();
                     }
+                });
+            }
+        }
+
+        public DelegateCommand OpenSubjectsDialog
+        {
+            get
+            {
+                return _openSubjectsDialog ??= new DelegateCommand((obj) =>
+                {
+                    var opensubjectsdialog = new ShowSubjectsDialog();
+                    opensubjectsdialog.ShowDialog();
                 });
             }
         }

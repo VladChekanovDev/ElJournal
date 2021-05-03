@@ -3,6 +3,7 @@ using ElJournal.Other;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -44,11 +45,11 @@ namespace ElJournal.Models
             }
         }
 
-        public List<Teacher> GetConnectionedList()
+        public ObservableCollection<Teacher> GetConnectionedList()
         {
             using (var db = new ElJournalDbContext())
             {
-                return db.Teachers.Include(t => t.TeacherToSubjects).ThenInclude(tts => tts.Subject).ToList();
+                return new ObservableCollection<Teacher>(db.Teachers.Include(t => t.TeacherToSubjects).ThenInclude(tts => tts.Subject).ToList());
             }
         }
 

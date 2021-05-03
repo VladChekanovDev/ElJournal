@@ -73,7 +73,7 @@
                         </StackPanel>
                     </Button>
                     <Button
-                        Margin="15 0 15 0"
+                        Margin="15 0 0 0"
                         Command="{Binding DeleteTeacher}">
                         <StackPanel 
                             Orientation="Horizontal">
@@ -83,6 +83,22 @@
                                 HorizontalAlignment="Center"/>
                             <TextBlock 
                                 Text="Удалить"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button 
+                        Margin="15 0 15 0"
+                        Command="{Binding EditTeacher}">
+                        <StackPanel 
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                                Kind="Edit"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                            <TextBlock 
+                                Text="Редактировать"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Margin="5 0 0 0"/>
@@ -100,22 +116,6 @@
                     Grid.Column="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-                    <Button 
-                        Margin="10 0 0 0"
-                        Command="{Binding EditTeacher}">
-                        <StackPanel 
-                            Orientation="Horizontal">
-                            <materialDesign:PackIcon 
-                                Kind="Edit"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"/>
-                            <TextBlock 
-                                Text="Редактировать"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Margin="5 0 0 0"/>
-                        </StackPanel>
-                    </Button>
                     <Button
                         Margin="15 0 15 0"
                         Command="{Binding AddSubject}">
@@ -127,6 +127,24 @@
                                 VerticalAlignment="Center"/>
                             <TextBlock 
                                 Text="Добавить предмет"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Margin="0 0 15 0"
+                        Command="{Binding OpenSubjectsDialog}">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                            <materialDesign:PackIcon 
+                                Kind="CardSearch"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                            <TextBlock 
+                                Text="Просмотреть предметы"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Margin="5 0 0 0"/>
@@ -148,23 +166,18 @@
                     <materialDesign:DataGridTextColumn
                         Header="Фамилия"
                         IsReadOnly="True"
-                        Width="150"
+                        Width="200"
                         Binding="{Binding LastName}"/>
                     <materialDesign:DataGridTextColumn
                         Header="Имя"
                         IsReadOnly="True"
-                        Width="150"
+                        Width="200"
                         Binding="{Binding FirstName}"/>
                     <materialDesign:DataGridTextColumn 
                         Header="Отчество"
                         IsReadOnly="True"
-                        Width="150"
-                        Binding="{Binding Patronymic}"/>
-                    <materialDesign:DataGridComboBoxColumn 
-                        Header="Предметы"
                         Width="*"
-                        ItemsSource="{Binding Path=FilteredList}">
-                    </materialDesign:DataGridComboBoxColumn>
+                        Binding="{Binding Patronymic}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
