@@ -54,8 +54,7 @@
                 </StackPanel>
                 <StackPanel
                     Grid.Column="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right">
+                    Orientation="Horizontal">
                     <Button
                         Margin="10 0 0 0"
                         Command="{Binding AddTeacher}">
@@ -114,10 +113,9 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel 
                     Grid.Column="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right">
+                    Orientation="Horizontal">
                     <Button
-                        Margin="15 0 15 0"
+                        Margin="10 0 0 0"
                         Command="{Binding AddSubject}">
                         <StackPanel
                             Orientation="Horizontal">
@@ -133,7 +131,7 @@
                         </StackPanel>
                     </Button>
                     <Button
-                        Margin="0 0 15 0"
+                        Margin="15 0 0 0"
                         Command="{Binding OpenSubjectsDialog}">
                         <StackPanel
                             Orientation="Horizontal"
