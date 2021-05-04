@@ -163,7 +163,22 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 {
                     if (_selectedSubject != null)
                     {
-
+                        var addgroupdialog = new AddGroupDialog();
+                        if (addgroupdialog.ShowDialog() == true)
+                        {
+                            var agdvm = (AddGroupDialogViewModel)addgroupdialog.DataContext;
+                            var grouptosubjectmodel = new GroupToSubjectModel();
+                            if (!grouptosubjectmodel.ConnectionExists(agdvm.SelectedGroup.GroupID, _selectedSubject.SubjectID))
+                            {
+                                var grouptosubject = new GroupToSubject(agdvm.SelectedGroup.GroupID, _selectedSubject.SubjectID);
+                                grouptosubjectmodel.Add(grouptosubject);
+                            }
+                            else
+                            {
+                                var err = new ErrorDialog(Validation.ConnectionExist);
+                                err.ShowDialog();
+                            }
+                        }
                     }
                     else
                     {

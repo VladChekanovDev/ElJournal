@@ -34,5 +34,15 @@ namespace ElJournal.Models
                 return db.GroupToSubjects.FirstOrDefault(gts => gts.GroupToSubjectID == id);
             }
         }
+
+        public bool ConnectionExists(int groupid, int subjectid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                if (db.GroupToSubjects.FirstOrDefault(gts => gts.SubjectID == subjectid && gts.GroupID == groupid) != null)
+                    return true;
+                else return false;
+            }
+        }
     }
 }
