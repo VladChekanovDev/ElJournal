@@ -11,6 +11,7 @@ namespace ElJournal.Entities
         public string Name { get; set; }
         public int Course { get; set; }
         public List<Student> Students { get; set; }
+        public List<GroupToSubject> GroupToSubjects { get; set; }
 
         [NotMapped]
         public bool IsSelected { get; set; }
