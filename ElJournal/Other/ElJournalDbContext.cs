@@ -29,5 +29,6 @@ namespace ElJournal.Other
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherToSubject> TeacherToSubjects { get; set; }
+        public DbSet<GroupToSubject> GroupToSubjects { get; set; }
     }
 }
