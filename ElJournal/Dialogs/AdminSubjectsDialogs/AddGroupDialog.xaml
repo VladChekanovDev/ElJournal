@@ -39,7 +39,7 @@
             SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBox 
+                    <TextBlock 
                         Text="{Binding Name}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>

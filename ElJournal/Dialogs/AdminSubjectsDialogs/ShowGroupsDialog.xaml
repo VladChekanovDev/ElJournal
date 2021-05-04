@@ -3,10 +3,82 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ElJournal.Dialogs.AdminSubjectsDialogs"
         mc:Ignorable="d"
-        Title="ShowGroupsDialog" Height="450" Width="800">
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="ShowGroupsDialog" 
+        Height="450" 
+        Width="500">
+    <Window.DataContext>
+        <local:ShowGroupsDialogViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75px"/>
+            <RowDefinition Height="75px"/>
+            <RowDefinition/>
+            <RowDefinition Height="75px"/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="40"
+            Text="Просмотр групп"/>
+        <ComboBox
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="250"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите предмет"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            ItemsSource="{Binding SubjectsList}"
+            SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock 
+                        Text="{Binding ShortName}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <DataGrid
+            Grid.Row="2"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            VerticalScrollBarVisibility="Auto"
+            ItemsSource="{Binding GroupsList}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="ID"
+                    Width="Auto"
+                    IsReadOnly="True"
+                    Binding="{Binding Group.GroupID}"/>
+                <DataGridTextColumn 
+                    Header="Курс"
+                    Width="Auto"
+                    IsReadOnly="True"
+                    Binding="{Binding Group.Course}"/>
+                <DataGridTextColumn 
+                    Header="Название группы"
+                    Width="*"
+                    IsReadOnly="True"
+                    Binding="{Binding Group.Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel
+            Grid.Row="3"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+            <Button 
+                Margin="0 0 15 0"
+                IsCancel="True"
+                Content="Назад"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
     </Grid>
 </Window>

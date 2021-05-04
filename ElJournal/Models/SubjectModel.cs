@@ -1,5 +1,6 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,14 @@ namespace ElJournal.Models
                 subject.ShortName = newsubject.ShortName;
                 subject.Name = newsubject.Name;
                 db.SaveChanges();
+            }
+        }
+
+        public List<Subject> GetConnectionedList()
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Subjects.Include(s => s.GroupToSubjects).ThenInclude(gts => gts.Group).ToList();
             }
         }
     }
