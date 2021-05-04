@@ -51,7 +51,9 @@
             Grid.Row="2"
             ItemsSource="{Binding SubjectsList}"
             AutoGenerateColumns="False"
-            CanUserAddRows="False">
+            CanUserAddRows="False"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
                     Header="ID"
@@ -60,7 +62,7 @@
                     IsReadOnly="True"/>
                 <materialDesign:DataGridTextColumn 
                     Header="Полное название предмета"
-                    Width="Auto"
+                    Width="300"
                     Binding="{Binding Subject.Name}"
                     IsReadOnly="True"/>
                 <materialDesign:DataGridTextColumn 
