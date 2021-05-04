@@ -20,6 +20,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         private DelegateCommand _addSubject;
         private DelegateCommand _deleteSubjects;
         private DelegateCommand _editSubject;
+        private DelegateCommand _addGroup;
+        private DelegateCommand _openGroupsDialog;
 
         #endregion
 
@@ -149,6 +151,36 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
                         err.ShowDialog();
                     }
+                });
+            }
+        }
+
+        public DelegateCommand AddGroup
+        {
+            get
+            {
+                return _addGroup ??= new DelegateCommand((obj) =>
+                {
+                    if (_selectedSubject != null)
+                    {
+
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
+                    }
+                });
+            }
+        }
+
+        public DelegateCommand OpenGroupsDialog
+        {
+            get
+            {
+                return _openGroupsDialog ??= new DelegateCommand((obj) =>
+                {
+
                 });
             }
         }
