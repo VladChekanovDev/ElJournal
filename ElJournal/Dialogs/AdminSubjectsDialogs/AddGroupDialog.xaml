@@ -4,9 +4,61 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElJournal.Dialogs.AdminSubjectsDialogs"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddGroupDialog" Height="450" Width="800">
+        x:Name="Window"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="AddGroupDialog" 
+        Height="225" 
+        Width="500">
+    <Window.DataContext>
+        <local:AddGroupDialogViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="40"
+            Text="Добавление группы"/>
+        <ComboBox
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="200"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите группу"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            ItemsSource="{Binding GroupsList}"
+            SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBox 
+                        Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+            <Button
+                Content="Добавить"
+                IsEnabled="{Binding IsAddActive}"
+                Command="{Binding AddGroup}"
+                CommandParameter="{Binding ElementName=Window}"/>
+            <Button
+                Margin="15 0 15 0"
+                Content="Отменить"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
     </Grid>
 </Window>
