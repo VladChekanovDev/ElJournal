@@ -1,5 +1,6 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,14 @@ namespace ElJournal.Models
                 names.Add(item.Name);
             }
             return names;
+        }
+
+        public List<Group> GetConnectionedList()
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Groups.Include(g => g.GroupToSubjects).ThenInclude(gts => gts.Subject).ToList();
+            }
         }
     }
 }

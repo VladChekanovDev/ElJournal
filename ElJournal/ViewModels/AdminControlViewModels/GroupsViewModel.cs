@@ -22,6 +22,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         private DelegateCommand _addGroup;
         private DelegateCommand _deleteGroups;
         private DelegateCommand _editGroup;
+        private DelegateCommand _addSubject;
+        private DelegateCommand _openSubjectsDialog;
 
         #endregion
 
@@ -153,6 +155,51 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                         var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
                         err.ShowDialog();
                     }
+                });
+            }
+        }
+
+        public DelegateCommand AddSubject
+        {
+            get
+            {
+                return _addSubject ??= new DelegateCommand((obj) =>
+                {
+                    if (_selectedGroup != null)
+                    {
+                        var addsubjectdialog = new AddSubjectDialog();
+                        if (addsubjectdialog.ShowDialog() == true)
+                        {
+                            var asdvm = (AddSubjectDialogViewModel)addsubjectdialog.DataContext;
+                            var grouptosubjectmodel = new GroupToSubjectModel();
+                            if (!grouptosubjectmodel.ConnectionExists(_selectedGroup.GroupID, asdvm.SelectedSubject.SubjectID))
+                            {
+                                var grouptosubject = new GroupToSubject(_selectedGroup.GroupID, asdvm.SelectedSubject.SubjectID);
+                                grouptosubjectmodel.Add(grouptosubject);
+                            }
+                            else
+                            {
+                                var err = new ErrorDialog(Validation.ConnectionExist);
+                                err.ShowDialog();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
+                        err.ShowDialog();
+                    }
+                });
+            }
+        }
+
+        public DelegateCommand OpenSubjectsDialog
+        {
+            get
+            {
+                return _openSubjectsDialog ??= new DelegateCommand((obj) =>
+                {
+                    new ShowSubjectsDialog().ShowDialog();
                 });
             }
         }

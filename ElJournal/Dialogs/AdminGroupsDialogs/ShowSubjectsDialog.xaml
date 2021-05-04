@@ -1,0 +1,84 @@
+﻿<Window x:Class="ElJournal.Dialogs.AdminGroupsDialogs.ShowSubjectsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElJournal.Dialogs.AdminGroupsDialogs"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ShowSubjectsDialog" 
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Height="450" 
+        Width="500">
+    <Window.DataContext>
+        <local:ShowSubjectsDialogViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75px"/>
+            <RowDefinition Height="75px"/>
+            <RowDefinition/>
+            <RowDefinition Height="75px"/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="40"
+            Text="Просмотр групп"/>
+        <ComboBox
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="250"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите группу"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            ItemsSource="{Binding GroupsList}"
+            SelectedItem="{Binding SelectedGroup, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock 
+                        Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <DataGrid
+            Grid.Row="2"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            VerticalScrollBarVisibility="Auto"
+            ItemsSource="{Binding SubjectsList}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="ID"
+                    Width="Auto"
+                    IsReadOnly="True"
+                    Binding="{Binding Subject.SubjectID}"/>
+                <DataGridTextColumn 
+                    Header="Полное название предмета"
+                    Width="300"
+                    IsReadOnly="True"
+                    Binding="{Binding Subject.Name}"/>
+                <DataGridTextColumn 
+                    Header="Сокращенное"
+                    Width="*"
+                    IsReadOnly="True"
+                    Binding="{Binding Subject.ShortName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel
+            Grid.Row="3"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+            <Button 
+                Margin="0 0 15 0"
+                IsCancel="True"
+                Content="Назад"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>

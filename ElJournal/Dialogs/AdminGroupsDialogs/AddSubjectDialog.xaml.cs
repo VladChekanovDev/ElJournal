@@ -10,14 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ElJournal.Dialogs.AdminSubjectsDialogs
+namespace ElJournal.Dialogs.AdminGroupsDialogs
 {
     /// <summary>
-    /// Логика взаимодействия для AddGroupDialog.xaml
+    /// Логика взаимодействия для AddSubjectDialog.xaml
     /// </summary>
-    public partial class AddGroupDialog : Window
+    public partial class AddSubjectDialog : Window
     {
-        public AddGroupDialog()
+        public AddSubjectDialog()
         {
             InitializeComponent();
         }

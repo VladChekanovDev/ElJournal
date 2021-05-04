@@ -16,7 +16,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50px"/>
-            <RowDefinition Height="50px"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid>
@@ -105,51 +104,8 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <Grid
-            Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="425px"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel
-                Grid.Column="1"
-                Orientation="Horizontal"
-                VerticalAlignment="Center">
-                <Button
-                    Margin="25 0 15 0"
-                    Command="{Binding AddGroup}">
-                    <StackPanel
-                        Orientation="Horizontal">
-                        <materialDesign:PackIcon 
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Kind="AccountMultipleAdd"/>
-                        <TextBlock 
-                            Margin="5 0 0 0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Text="Добавить группу"/>
-                    </StackPanel>
-                </Button>
-                <Button
-                    Command="{Binding OpenGroupsDialog}">
-                    <StackPanel
-                        Orientation="Horizontal">
-                        <materialDesign:PackIcon 
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Kind="CardSearch"/>
-                        <TextBlock 
-                            Margin="5 0 0 0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Text="Просмотреть группы"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </Grid>
         <DataGrid
-            Grid.Row="2"
+            Grid.Row="1"
             CanUserAddRows="False"
             AutoGenerateColumns="False"
             ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}"

@@ -4,26 +4,24 @@ using ElJournal.Other;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows;
 
-namespace ElJournal.Dialogs.AdminSubjectsDialogs
+namespace ElJournal.Dialogs.AdminGroupsDialogs
 {
-    class AddGroupDialogViewModel: BaseViewModel
+    class ShowSubjectsDialogViewModel: BaseViewModel
     {
         #region Поля
 
         private List<Group> _groupsList;
         private Group _selectedGroup;
-        private DelegateCommand _addGroup;
 
         #endregion
 
         #region Конструктор
 
-        public AddGroupDialogViewModel()
+        public ShowSubjectsDialogViewModel()
         {
             var groupmodel = new GroupModel();
-            _groupsList = groupmodel.GetList();
+            _groupsList = groupmodel.GetConnectionedList();
         }
 
         #endregion
@@ -36,7 +34,7 @@ namespace ElJournal.Dialogs.AdminSubjectsDialogs
             set
             {
                 _groupsList = value;
-                OnPropertyChanged(nameof(GroupsList));
+                OnPropertyChanged();
             }
         }
 
@@ -46,25 +44,19 @@ namespace ElJournal.Dialogs.AdminSubjectsDialogs
             set
             {
                 _selectedGroup = value;
-                OnPropertyChanged(nameof(IsAddActive));
+                OnPropertyChanged(nameof(SubjectsList));
             }
         }
 
-        public bool IsAddActive => _selectedGroup != null;
-
-        #endregion
-
-        #region Команды
-
-        public DelegateCommand AddGroup
+        public List<GroupToSubject> SubjectsList
         {
             get
             {
-                return _addGroup ??= new DelegateCommand((arg) =>
+                if (_selectedGroup != null)
                 {
-                    var window = (Window)arg;
-                    window.DialogResult = true;
-                });
+                    return _selectedGroup.GroupToSubjects;
+                }
+                else return null;
             }
         }
 

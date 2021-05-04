@@ -155,51 +155,6 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             }
         }
 
-        public DelegateCommand AddGroup
-        {
-            get
-            {
-                return _addGroup ??= new DelegateCommand((obj) =>
-                {
-                    if (_selectedSubject != null)
-                    {
-                        var addgroupdialog = new AddGroupDialog();
-                        if (addgroupdialog.ShowDialog() == true)
-                        {
-                            var agdvm = (AddGroupDialogViewModel)addgroupdialog.DataContext;
-                            var grouptosubjectmodel = new GroupToSubjectModel();
-                            if (!grouptosubjectmodel.ConnectionExists(agdvm.SelectedGroup.GroupID, _selectedSubject.SubjectID))
-                            {
-                                var grouptosubject = new GroupToSubject(agdvm.SelectedGroup.GroupID, _selectedSubject.SubjectID);
-                                grouptosubjectmodel.Add(grouptosubject);
-                            }
-                            else
-                            {
-                                var err = new ErrorDialog(Validation.ConnectionExist);
-                                err.ShowDialog();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var err = new ErrorDialog(Validation.ItemIsNotSelectedError);
-                        err.ShowDialog();
-                    }
-                });
-            }
-        }
-
-        public DelegateCommand OpenGroupsDialog
-        {
-            get
-            {
-                return _openGroupsDialog ??= new DelegateCommand((obj) =>
-                {
-
-                });
-            }
-        }
-
         #endregion
     }
 }
