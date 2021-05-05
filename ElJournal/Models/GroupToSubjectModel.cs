@@ -1,5 +1,6 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,16 @@ namespace ElJournal.Models
                 if (db.GroupToSubjects.FirstOrDefault(gts => gts.SubjectID == subjectid && gts.GroupID == groupid) != null)
                     return true;
                 else return false;
+            }
+        }
+
+        public List<GroupToSubject> GetGroupsBySubject(int subjectid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.GroupToSubjects.Where(gts => gts.SubjectID == subjectid)
+                    .Include(gts => gts.Group)
+                    .ToList();
             }
         }
     }

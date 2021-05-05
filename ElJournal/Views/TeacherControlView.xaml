@@ -30,14 +30,28 @@
                 <ComboBox
                     Margin="15 15 15 0"
                     materialDesign:HintAssist.Hint="Выберите предмет"
-                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                    ItemsSource="{Binding SubjectsList}"
+                    SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding Subject.ShortName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
                 <ComboBox
                     Margin="15 15 15 0"
                     materialDesign:HintAssist.Hint="Выберите группу"
-                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                    IsEnabled="{Binding IsGroupsListActive}"
+                    ItemsSource="{Binding GroupsList}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding Group.Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
                 <ComboBox
                     Margin="15 15 15 0"

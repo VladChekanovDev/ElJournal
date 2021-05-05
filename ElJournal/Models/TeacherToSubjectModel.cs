@@ -1,5 +1,6 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,14 @@ namespace ElJournal.Models
                 if (db.TeacherToSubjects.FirstOrDefault(tts => tts.SubjectID == subjectid && tts.TeacherID == teacherid) != null)
                     return true;
                 else return false;
+            }
+        }
+
+        public List<TeacherToSubject> GetTTSsByTeacher(int teacherid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.TeacherToSubjects.Where(tts => tts.TeacherID == teacherid).Include(tts => tts.Subject).ToList();
             }
         }
 

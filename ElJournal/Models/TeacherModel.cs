@@ -64,5 +64,13 @@ namespace ElJournal.Models
                 db.SaveChanges();
             }
         }
+
+        public Teacher GetTeacherByUserID(int userid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Teachers.FirstOrDefault(t => t.UserID == userid);
+            }
+        }
     }
 }
