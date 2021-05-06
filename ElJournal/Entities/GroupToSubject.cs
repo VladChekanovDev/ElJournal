@@ -11,6 +11,7 @@ namespace ElJournal.Entities
         public int SubjectID { get; set; }
         public Group Group { get; set; }
         public Subject Subject { get; set; }
+        public List<Lesson> Lessons { get; set; }
 
         public GroupToSubject()
         {

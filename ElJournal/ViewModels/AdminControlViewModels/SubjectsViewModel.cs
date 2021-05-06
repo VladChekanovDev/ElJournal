@@ -20,8 +20,6 @@ namespace ElJournal.ViewModels.AdminControlViewModels
         private DelegateCommand _addSubject;
         private DelegateCommand _deleteSubjects;
         private DelegateCommand _editSubject;
-        private DelegateCommand _addGroup;
-        private DelegateCommand _openGroupsDialog;
 
         #endregion
 

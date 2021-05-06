@@ -26,7 +26,7 @@
             </Grid.RowDefinitions>
             <StackPanel
                 Grid.Row="0"
-                Background="#673ab7">
+                Background="#ad97c5">
                 <ComboBox
                     Margin="15 15 15 0"
                     materialDesign:HintAssist.Hint="Выберите предмет"
@@ -62,7 +62,7 @@
             </StackPanel>
             <StackPanel
                 Grid.Row="1"
-                Background="#482880">
+                Background="#7d69a3">
                 <Button 
                     Margin="0 15 0 0"
                     HorizontalAlignment="Center"
