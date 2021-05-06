@@ -18,6 +18,7 @@ namespace ElJournal.Other
         public static string SubjectNotFound = "Предмет с указанным ID не найден. Попробуйте снова";
         public static string ItemIsNotSelectedError = "Запись не выбрана.";
         public static string ConnectionExist = "Связь уже существует. Попробуйте другой предмет";
+        public static string SemesterExistError = "Семестр уже существует. Попробуйте другое значение";
         public static bool LoginValidate(string Login)
         {
             Regex LoginRegex = new Regex(@"^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d._]{0,32}$");

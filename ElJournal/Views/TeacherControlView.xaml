@@ -59,11 +59,12 @@
                     materialDesign:HintAssist.Hint="Выберите семестр"
                     Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                     IsEnabled="{Binding IsSemestersActive}"
-                    ItemsSource="{Binding , UpdateSourceTrigger=PropertyChanged}">
+                    ItemsSource="{Binding SemestersList}"
+                    SelectedItem="{}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock 
-                                Text="{Binding }"/>
+                                Text="{Binding Value}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -134,7 +135,9 @@
                     HorizontalAlignment="Left">
                     <Button
                         Margin="15 0 0 0"
-                        IsEnabled="{Binding IsSemestersActive}">
+                        IsEnabled="{Binding IsSemestersActive}"
+                        Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                        Command="{Binding AddSemester}">
                         <StackPanel
                             Orientation="Horizontal"
                             VerticalAlignment="Center"

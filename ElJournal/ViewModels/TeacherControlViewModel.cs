@@ -1,4 +1,6 @@
-﻿using ElJournal.Entities;
+﻿using ElJournal.Dialogs;
+using ElJournal.Dialogs.TeacherControlDialogs;
+using ElJournal.Entities;
 using ElJournal.Models;
 using ElJournal.Other;
 using ElJournal.Views;
@@ -18,6 +20,7 @@ namespace ElJournal.ViewModels
         private GroupToSubject _selectedGroup;
         private Teacher _currentTeacher;
         private DelegateCommand _logout;
+        private DelegateCommand _addSemester;
 
         #endregion
 
@@ -110,6 +113,33 @@ namespace ElJournal.ViewModels
                     logform.Show();
                     Application.Current.MainWindow.Close();
                     Application.Current.MainWindow = logform;
+                });
+            }
+        }
+
+        public DelegateCommand AddSemester
+        {
+            get
+            {
+                return _addSemester ??= new DelegateCommand((obj) =>
+                {
+                    var addsemesterdialog = new AddSemesterDialog();
+                    if (addsemesterdialog.ShowDialog() == true)
+                    {
+                        var asvm = (AddSemesterViewModel)addsemesterdialog.DataContext;
+                        var semestermodel = new SemesterModel();
+                        if (!semestermodel.IsSemesterExists(_selectedGroup.GroupToSubjectID, int.Parse(asvm.Semester)))
+                        {
+                            var newsemester = new Semester(_selectedGroup.GroupToSubjectID, int.Parse(asvm.Semester));
+                            semestermodel.Add(newsemester);
+                            OnPropertyChanged(nameof(SemestersList));
+                        }
+                        else
+                        {
+                            var err = new ErrorDialog(Validation.SemesterExistError);
+                            err.ShowDialog();
+                        }
+                    }
                 });
             }
         }

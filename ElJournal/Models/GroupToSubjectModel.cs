@@ -56,13 +56,11 @@ namespace ElJournal.Models
             }
         }
 
-        public List<GroupToSubject> GetSemesters(int groupid, int subjectid)
+        public GroupToSubject GetGTSByIDs(int groupid, int subjectid)
         {
             using (var db = new ElJournalDbContext())
             {
-                return db.GroupToSubjects.Where(gts => gts.SubjectID == subjectid && gts.GroupID == groupid)
-                    .Include(gts => gts.Semesters)
-                    .ToList();
+                return db.GroupToSubjects.FirstOrDefault(gts => gts.SubjectID == subjectid && gts.GroupID == groupid);
             }
         }
     }

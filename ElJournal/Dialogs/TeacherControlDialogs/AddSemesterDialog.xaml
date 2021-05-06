@@ -1,0 +1,66 @@
+﻿<Window x:Class="ElJournal.Dialogs.TeacherControlDialogs.AddSemesterDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElJournal.Dialogs.TeacherControlDialogs"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        x:Name="Window"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="AddSemesterDialog" 
+        Height="225" 
+        Width="500">
+    <Window.DataContext>
+        <local:AddSemesterViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="40"
+            Text="Добавление"/>
+        <ComboBox
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="200"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите семестр"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Text="{Binding Semester, UpdateSourceTrigger=PropertyChanged}">
+            <TextBlock>1</TextBlock>
+            <TextBlock>2</TextBlock>
+            <TextBlock>3</TextBlock>
+            <TextBlock>4</TextBlock>
+            <TextBlock>5</TextBlock>
+            <TextBlock>6</TextBlock>
+            <TextBlock>7</TextBlock>
+            <TextBlock>8</TextBlock>
+        </ComboBox>
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+            <Button 
+                Content="Добавить"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                IsEnabled="{Binding IsAddActive}"
+                Command="{Binding AddSemester}"
+                CommandParameter="{Binding ElementName=Window}"/>
+            <Button 
+                Margin="15 0 15 0"
+                IsCancel="True"
+                Content="Отменить"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>

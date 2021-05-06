@@ -36,13 +36,25 @@ namespace ElJournal.Models
             }
         }
 
+        public bool IsSemesterExists(int gtsid, int value)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                if (db.Semesters.FirstOrDefault(s => s.GroupToSubjectID == gtsid && s.Value == value) != null)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+
         public List<Semester> GetSemesters(int groupid, int subjectid)
         {
             using (var db = new ElJournalDbContext())
             {
-                return db.Semesters
+                return db.Semesters.Include(s => s.GroupToSubject)
                     .Where(s => s.GroupToSubject.GroupID == groupid && s.GroupToSubject.SubjectID == subjectid)
-                    .Include(s => s.GroupToSubject).ToList();
+                    .ToList();
             }
         }
     }

@@ -16,5 +16,11 @@ namespace ElJournal.Entities
         {
 
         }
+
+        public Semester(int gtsid, int value)
+        {
+            GroupToSubjectID = gtsid;
+            Value = value;
+        }
     }
 }
