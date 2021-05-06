@@ -1,5 +1,6 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,16 @@ namespace ElJournal.Models
             using (var db = new ElJournalDbContext())
             {
                 return db.Semesters.FirstOrDefault(s => s.SemesterID == id);
+            }
+        }
+
+        public List<Semester> GetSemesters(int groupid, int subjectid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Semesters
+                    .Where(s => s.GroupToSubject.GroupID == groupid && s.GroupToSubject.SubjectID == subjectid)
+                    .Include(s => s.GroupToSubject).ToList();
             }
         }
     }

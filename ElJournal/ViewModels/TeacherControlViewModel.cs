@@ -15,6 +15,7 @@ namespace ElJournal.ViewModels
 
         private List<TeacherToSubject> _subjectsList;
         private TeacherToSubject _selectedSubject;
+        private GroupToSubject _selectedGroup;
         private Teacher _currentTeacher;
         private DelegateCommand _logout;
 
@@ -67,7 +68,31 @@ namespace ElJournal.ViewModels
             }
         }
 
+        public GroupToSubject SelectedGroup
+        {
+            get => _selectedGroup;
+            set
+            {
+                _selectedGroup = value;
+                OnPropertyChanged(nameof(IsSemestersActive));
+                OnPropertyChanged(nameof(SemestersList));
+            }
+        }
+
+        public List<Semester> SemestersList
+        {
+            get
+            {
+                if (IsSemestersActive)
+                {
+                    return new SemesterModel().GetSemesters(_selectedGroup.GroupID, _selectedSubject.SubjectID);
+                }
+                else return null;
+            }
+        }
+
         public bool IsGroupsListActive => _selectedSubject != null;
+        public bool IsSemestersActive => _selectedGroup != null;
 
         #endregion
 

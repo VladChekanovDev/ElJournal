@@ -55,5 +55,15 @@ namespace ElJournal.Models
                     .ToList();
             }
         }
+
+        public List<GroupToSubject> GetSemesters(int groupid, int subjectid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.GroupToSubjects.Where(gts => gts.SubjectID == subjectid && gts.GroupID == groupid)
+                    .Include(gts => gts.Semesters)
+                    .ToList();
+            }
+        }
     }
 }

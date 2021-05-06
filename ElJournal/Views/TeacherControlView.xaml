@@ -45,7 +45,8 @@
                     materialDesign:HintAssist.Hint="Выберите группу"
                     Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                     IsEnabled="{Binding IsGroupsListActive}"
-                    ItemsSource="{Binding GroupsList}">
+                    ItemsSource="{Binding GroupsList}"
+                    SelectedItem="{Binding SelectedGroup}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock 
@@ -56,8 +57,15 @@
                 <ComboBox
                     Margin="15 15 15 0"
                     materialDesign:HintAssist.Hint="Выберите семестр"
-                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                    IsEnabled="{Binding IsSemestersActive}"
+                    ItemsSource="{Binding , UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding }"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
             <StackPanel
@@ -125,7 +133,8 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left">
                     <Button
-                        Margin="15 0 0 0">
+                        Margin="15 0 0 0"
+                        IsEnabled="{Binding IsSemestersActive}">
                         <StackPanel
                             Orientation="Horizontal"
                             VerticalAlignment="Center"
