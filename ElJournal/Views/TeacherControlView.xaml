@@ -60,7 +60,7 @@
                     Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                     IsEnabled="{Binding IsSemestersActive}"
                     ItemsSource="{Binding SemestersList}"
-                    SelectedItem="{}">
+                    SelectedItem="{Binding SelectedSemester}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock 
@@ -99,6 +99,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50px"/>
                 <RowDefinition/>
+                <RowDefinition Height="60px"/>
             </Grid.RowDefinitions>
             <Grid
                 Grid.Row="0">
@@ -156,19 +157,47 @@
                 </StackPanel>
             </Grid>
             <DataGrid
-            Grid.Row="1"
-            AutoGenerateColumns="False"
-            CanUserAddRows="False"
-            IsReadOnly="True">
+                Grid.Row="1"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding LessonsList, UpdateSourceTrigger=PropertyChanged}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn 
-                    Header="Дата"
-                    Width="Auto"/>
-                    <DataGridTextColumn 
-                    Header="Тема"
-                    Width="*"/>
+                    <materialDesign:DataGridTextColumn 
+                        Header="Дата"
+                        Width="Auto"
+                        Binding="{Binding Date}"/>
+                    <materialDesign:DataGridTextColumn 
+                        Header="Тема"
+                        Width="*"
+                        Binding="{Binding Topic}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <StackPanel
+                Grid.Row="2"
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right">
+                <Button
+                    Margin="15 0 15 0"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    IsEnabled="{Binding IsLessonsActive}"
+                    Command="{Binding AddLesson}">
+                    <StackPanel
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="Add"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                        <TextBlock 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Text="Добавить урок"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

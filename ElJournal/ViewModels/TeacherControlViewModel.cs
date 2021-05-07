@@ -18,9 +18,11 @@ namespace ElJournal.ViewModels
         private List<TeacherToSubject> _subjectsList;
         private TeacherToSubject _selectedSubject;
         private GroupToSubject _selectedGroup;
+        private Semester _selectedSemester;
         private Teacher _currentTeacher;
         private DelegateCommand _logout;
         private DelegateCommand _addSemester;
+        private DelegateCommand _addLesson;
 
         #endregion
 
@@ -94,8 +96,26 @@ namespace ElJournal.ViewModels
             }
         }
 
+        public Semester SelectedSemester
+        {
+            get => _selectedSemester;
+            set
+            {
+                _selectedSemester = value;
+                OnPropertyChanged(nameof(LessonsList));
+                OnPropertyChanged(nameof(IsLessonsActive));
+            }
+        }
+
+        public List<Lesson> LessonsList
+        {
+            get => _selectedSemester != null ? 
+                _selectedSemester.Lessons : null;
+        }
+
         public bool IsGroupsListActive => _selectedSubject != null;
         public bool IsSemestersActive => _selectedGroup != null;
+        public bool IsLessonsActive => _selectedSemester != null;
 
         #endregion
 
@@ -139,6 +159,21 @@ namespace ElJournal.ViewModels
                             var err = new ErrorDialog(Validation.SemesterExistError);
                             err.ShowDialog();
                         }
+                    }
+                });
+            }
+        }
+
+        public DelegateCommand AddLesson
+        {
+            get
+            {
+                return _addLesson ??= new DelegateCommand((obj) =>
+                {
+                    var addlessondialog = new AddLessonDialog();
+                    if (addlessondialog.ShowDialog() == true)
+                    {
+
                     }
                 });
             }

@@ -1,0 +1,57 @@
+﻿<Window x:Class="ElJournal.Dialogs.TeacherControlDialogs.AddLessonDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElJournal.Dialogs.TeacherControlDialogs"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        x:Name="Window"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="AddLessonDialog" 
+        Height="225" 
+        Width="500">
+    <Window.DataContext>
+        <local:AddLessonViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock 
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="40"
+            Text="Добавление урока"/>
+        <TextBox 
+            Grid.Row="1"
+            Width="400"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Введите тему урока"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Topic, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+            <Button 
+                Content="Добавить"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                IsEnabled="{Binding IsAddActive}"
+                Command="{Binding AddLesson}"
+                CommandParameter="{Binding ElementName=Window}"/>
+            <Button 
+                Margin="15 0 15 0"
+                IsCancel="True"
+                Content="Отменить"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>
