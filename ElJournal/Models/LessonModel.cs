@@ -2,6 +2,7 @@
 using ElJournal.Other;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ElJournal.Models
@@ -31,6 +32,14 @@ namespace ElJournal.Models
             using (var db = new ElJournalDbContext())
             {
                 return db.Lessons.Find(id);
+            }
+        }
+
+        public List<Lesson> GetLessonsBySemester(int semesterid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Lessons.Where(l => l.SemesterID == semesterid).ToList();
             }
         }
     }

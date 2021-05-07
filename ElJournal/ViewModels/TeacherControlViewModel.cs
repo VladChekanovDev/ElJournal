@@ -110,7 +110,7 @@ namespace ElJournal.ViewModels
         public List<Lesson> LessonsList
         {
             get => _selectedSemester != null ? 
-                _selectedSemester.Lessons : null;
+                new LessonModel().GetLessonsBySemester(_selectedSemester.SemesterID) : null;
         }
 
         public bool IsGroupsListActive => _selectedSubject != null;
@@ -173,7 +173,11 @@ namespace ElJournal.ViewModels
                     var addlessondialog = new AddLessonDialog();
                     if (addlessondialog.ShowDialog() == true)
                     {
-
+                        var alvm = (AddLessonViewModel)addlessondialog.DataContext;
+                        var newlesson = new Lesson(_selectedSemester.SemesterID, DateTime.Now, alvm.Topic);
+                        var lessonmodel = new LessonModel();
+                        lessonmodel.Add(newlesson);
+                        OnPropertyChanged(nameof(LessonsList));
                     }
                 });
             }

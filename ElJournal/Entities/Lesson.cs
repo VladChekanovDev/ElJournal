@@ -18,5 +18,12 @@ namespace ElJournal.Entities
         {
 
         }
+
+        public Lesson(int semesterid, DateTime date, string topic)
+        {
+            SemesterID = semesterid;
+            Date = date;
+            Topic = topic;
+        }
     }
 }
