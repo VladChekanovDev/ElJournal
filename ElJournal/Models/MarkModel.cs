@@ -34,5 +34,13 @@ namespace ElJournal.Models
                 return db.Marks.FirstOrDefault(m => m.MarkID == id);
             }
         }
+
+        public List<Mark> GetMarksByLesson(int lessonid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Marks.Where(m => m.LessonID == lessonid).ToList();
+            }
+        }
     }
 }

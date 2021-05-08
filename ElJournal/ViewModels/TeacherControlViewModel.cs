@@ -22,9 +22,11 @@ namespace ElJournal.ViewModels
         private Semester _selectedSemester;
         private Teacher _currentTeacher;
         private string _filter;
+        private Lesson _selectedLesson;
         private DelegateCommand _logout;
         private DelegateCommand _addSemester;
         private DelegateCommand _addLesson;
+        private DelegateCommand _showLessonMarks;
 
         #endregion
 
@@ -83,6 +85,7 @@ namespace ElJournal.ViewModels
                 _selectedGroup = value;
                 OnPropertyChanged(nameof(IsSemestersActive));
                 OnPropertyChanged(nameof(SemestersList));
+                OnPropertyChanged(nameof(StudentsList));
             }
         }
 
@@ -116,6 +119,23 @@ namespace ElJournal.ViewModels
                 new LessonModel().GetLessonsBySemester(_selectedSemester.SemesterID) : null;
         }
 
+        public Lesson SelectedLesson
+        {
+            get => _selectedLesson;
+            set
+            {
+                _selectedLesson = value;
+                OnPropertyChanged(nameof(IsMarksActive));
+            }
+        }
+
+        public List<Student> StudentsList
+        {
+            get => _selectedGroup != null ?
+                new StudentModel().GetStudentsByGroup(_selectedGroup.GroupID)
+                : null;
+        }
+
         public string Filter
         {
             get => _filter;
@@ -126,21 +146,26 @@ namespace ElJournal.ViewModels
             }
         }
 
-        public IEnumerable<Lesson> FilteredList
+        public List<Lesson> FilteredList
         {
             get
             {
                 if (!string.IsNullOrWhiteSpace(_filter))
                 {
-                    return LessonsList.Where(l => l.Topic.ToLower().Contains(_filter.ToLower()) || l.Topic.ToLower() == _filter.ToLower());
+                    return LessonsList.Where(l => l.Topic.ToLower().Contains(_filter.ToLower()) || l.Topic.ToLower() == _filter.ToLower()).ToList();
                 }
                 else return LessonsList;
             }
         }
 
+        #region Активаторы
+
         public bool IsGroupsListActive => _selectedSubject != null;
         public bool IsSemestersActive => _selectedGroup != null;
         public bool IsLessonsActive => _selectedSemester != null;
+        public bool IsMarksActive => _selectedLesson != null;
+
+        #endregion
 
         #endregion
 
@@ -204,6 +229,22 @@ namespace ElJournal.ViewModels
                         lessonmodel.Add(newlesson);
                         OnPropertyChanged(nameof(LessonsList));
                         OnPropertyChanged(nameof(FilteredList));
+                    }
+                });
+            }
+        }
+
+        public DelegateCommand ShowLessonMarks
+        {
+            get
+            {
+                return _showLessonMarks ??= new DelegateCommand((obj) =>
+                {
+                    Other.SelectedLesson.CurrentSelectedLesson = _selectedLesson;
+                    var showmarksdialog = new ShowMarksDialog();
+                    if (showmarksdialog.ShowDialog() == true)
+                    {
+
                     }
                 });
             }

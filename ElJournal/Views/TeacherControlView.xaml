@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ElJournal.Views"
-             xmlns:other="clr-namespace:ElJournal.Other"
              xmlns:vm="clr-namespace:ElJournal.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="415" 
@@ -165,7 +164,8 @@
                 CanUserAddRows="False"
                 IsReadOnly="True"
                 IsEnabled="{Binding IsLessonsActive}"
-                ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}">
+                ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding SelectedLesson, UpdateSourceTrigger=PropertyChanged}">
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn 
                         Header="Дата"
@@ -199,6 +199,20 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             Text="Добавить урок"/>
+                    </StackPanel>
+                </Button>
+                <Button 
+                    Margin="0 0 15 0"
+                    IsEnabled="{Binding IsMarksActive}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Command="{Binding ShowLessonMarks}">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="BookAccount"/>
+                        <TextBlock 
+                            Margin="5 0 0 0"
+                            Text="Оценки за урок"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

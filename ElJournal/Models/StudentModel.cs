@@ -64,5 +64,13 @@ namespace ElJournal.Models
                 db.SaveChanges();
             }
         }
+
+        public List<Student> GetStudentsByGroup(int groupid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Students.Where(s => s.GroupID == groupid).ToList();
+            }
+        }
     }
 }
