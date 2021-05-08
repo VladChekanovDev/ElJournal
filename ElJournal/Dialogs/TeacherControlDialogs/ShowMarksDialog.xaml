@@ -31,7 +31,8 @@
             AutoGenerateColumns="False"
             CanUserAddRows="False"
             CanUserDeleteRows="True"
-            ItemsSource="{Binding MarksList}">
+            ItemsSource="{Binding MarksList}"
+            IsReadOnly="True">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
                     Header="Учащийся"

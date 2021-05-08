@@ -227,6 +227,8 @@ namespace ElJournal.ViewModels
                         var newlesson = new Lesson(_selectedSemester.SemesterID, DateTime.Now, alvm.Topic);
                         var lessonmodel = new LessonModel();
                         lessonmodel.Add(newlesson);
+                        var markmodel = new MarkModel();
+                        markmodel.AddLessonMarks(newlesson, StudentsList);
                         OnPropertyChanged(nameof(LessonsList));
                         OnPropertyChanged(nameof(FilteredList));
                     }

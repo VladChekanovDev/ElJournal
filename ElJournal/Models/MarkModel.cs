@@ -1,5 +1,6 @@
 ﻿using ElJournal.Entities;
 using ElJournal.Other;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,22 @@ namespace ElJournal.Models
         {
             using (var db = new ElJournalDbContext())
             {
-                return db.Marks.Where(m => m.LessonID == lessonid).ToList();
+                return db.Marks.Where(m => m.LessonID == lessonid)
+                    .Include(m => m.Student)
+                    .ToList();
+            }
+        }
+
+        public void AddLessonMarks(Lesson lesson, List<Student> studentslist)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                var lessonid = db.Lessons.FirstOrDefault(l => l.Date == lesson.Date && l.Topic == l.Topic).LessonID;
+                foreach(var item in studentslist)
+                {
+                    var newmark = new Mark(item.StudentID, lessonid);
+                    Add(newmark);
+                }
             }
         }
     }

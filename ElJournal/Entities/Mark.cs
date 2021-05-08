@@ -8,7 +8,6 @@ namespace ElJournal.Entities
     {
         public int MarkID { get; set; }
         public int StudentID { get; set; }
-        public int SubjectID { get; set; }
         public string Value { get; set; }
         public int LessonID { get; set; }
         public Student Student { get; set; }
@@ -16,6 +15,13 @@ namespace ElJournal.Entities
         public Mark()
         {
 
+        }
+
+        public Mark(int studentid, int lessonid)
+        {
+            StudentID = studentid;
+            LessonID = lessonid;
+            Value = "";
         }
     }
 }
