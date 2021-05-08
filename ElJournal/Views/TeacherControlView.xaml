@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ElJournal.Views"
+             xmlns:other="clr-namespace:ElJournal.Other"
              xmlns:vm="clr-namespace:ElJournal.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="415" 
@@ -125,6 +126,8 @@
                             HorizontalAlignment="Center"
                             Width="150px"
                             Margin="5 0 0 0"
+                            IsEnabled="{Binding IsLessonsActive, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"
                             materialDesign:HintAssist.Hint="Поиск..."
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"/>
                     </StackPanel>
@@ -161,7 +164,8 @@
                 AutoGenerateColumns="False"
                 CanUserAddRows="False"
                 IsReadOnly="True"
-                ItemsSource="{Binding LessonsList, UpdateSourceTrigger=PropertyChanged}">
+                IsEnabled="{Binding IsLessonsActive}"
+                ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}">
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn 
                         Header="Дата"

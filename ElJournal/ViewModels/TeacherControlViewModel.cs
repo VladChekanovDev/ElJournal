@@ -6,6 +6,7 @@ using ElJournal.Other;
 using ElJournal.Views;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 
@@ -20,6 +21,7 @@ namespace ElJournal.ViewModels
         private GroupToSubject _selectedGroup;
         private Semester _selectedSemester;
         private Teacher _currentTeacher;
+        private string _filter;
         private DelegateCommand _logout;
         private DelegateCommand _addSemester;
         private DelegateCommand _addLesson;
@@ -103,6 +105,7 @@ namespace ElJournal.ViewModels
             {
                 _selectedSemester = value;
                 OnPropertyChanged(nameof(LessonsList));
+                OnPropertyChanged(nameof(FilteredList));
                 OnPropertyChanged(nameof(IsLessonsActive));
             }
         }
@@ -111,6 +114,28 @@ namespace ElJournal.ViewModels
         {
             get => _selectedSemester != null ? 
                 new LessonModel().GetLessonsBySemester(_selectedSemester.SemesterID) : null;
+        }
+
+        public string Filter
+        {
+            get => _filter;
+            set
+            {
+                _filter = value;
+                OnPropertyChanged(nameof(FilteredList));
+            }
+        }
+
+        public IEnumerable<Lesson> FilteredList
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(_filter))
+                {
+                    return LessonsList.Where(l => l.Topic.ToLower().Contains(_filter.ToLower()) || l.Topic.ToLower() == _filter.ToLower());
+                }
+                else return LessonsList;
+            }
         }
 
         public bool IsGroupsListActive => _selectedSubject != null;
@@ -178,6 +203,7 @@ namespace ElJournal.ViewModels
                         var lessonmodel = new LessonModel();
                         lessonmodel.Add(newlesson);
                         OnPropertyChanged(nameof(LessonsList));
+                        OnPropertyChanged(nameof(FilteredList));
                     }
                 });
             }
