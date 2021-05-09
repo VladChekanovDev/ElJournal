@@ -11,6 +11,7 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
         #region Поля
 
         private string _topic;
+        private string _lessonType;
         private DelegateCommand _addLesson;
 
         #endregion
@@ -27,7 +28,17 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
             }
         }
 
-        public bool IsAddActive => !string.IsNullOrWhiteSpace(_topic);
+        public string LessonType
+        {
+            get => _lessonType;
+            set
+            {
+                _lessonType = value;
+                OnPropertyChanged(nameof(IsAddActive));
+            }
+        }
+
+        public bool IsAddActive => !string.IsNullOrWhiteSpace(_topic) && !string.IsNullOrWhiteSpace(_lessonType);
 
         #endregion
 

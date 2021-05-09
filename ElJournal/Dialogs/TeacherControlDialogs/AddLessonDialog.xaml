@@ -10,13 +10,14 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="AddLessonDialog" 
-        Height="225" 
+        Height="300" 
         Width="500">
     <Window.DataContext>
         <local:AddLessonViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -36,8 +37,24 @@
             materialDesign:HintAssist.Hint="Введите тему урока"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             Text="{Binding Topic, UpdateSourceTrigger=PropertyChanged}"/>
-        <StackPanel
+        <ComboBox 
             Grid.Row="2"
+            Width="200"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите тип урока"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            <TextBlock>Лекция</TextBlock>
+            <TextBlock>Лабораторная</TextBlock>
+            <TextBlock>Практическая</TextBlock>
+            <TextBlock>Контрольная</TextBlock>
+            <ComboBox.Text>
+                <Binding Path="LessonType" UpdateSourceTrigger="PropertyChanged"/>
+            </ComboBox.Text>
+        </ComboBox>
+        <StackPanel
+            Grid.Row="3"
             Orientation="Horizontal"
             VerticalAlignment="Center"
             HorizontalAlignment="Right">

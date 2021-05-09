@@ -169,12 +169,16 @@
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn 
                         Header="Дата"
-                        Width="Auto"
+                        Width="175"
                         Binding="{Binding Date}"/>
                     <materialDesign:DataGridTextColumn 
                         Header="Тема"
-                        Width="*"
+                        Width="350"
                         Binding="{Binding Topic}"/>
+                    <materialDesign:DataGridTextColumn 
+                        Header="Тип"
+                        Width="*"
+                        Binding="{Binding LessonType}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel

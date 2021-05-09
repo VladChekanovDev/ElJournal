@@ -225,7 +225,7 @@ namespace ElJournal.ViewModels
                     if (addlessondialog.ShowDialog() == true)
                     {
                         var alvm = (AddLessonViewModel)addlessondialog.DataContext;
-                        var newlesson = new Lesson(_selectedSemester.SemesterID, DateTime.Now, alvm.Topic);
+                        var newlesson = new Lesson(_selectedSemester.SemesterID, DateTime.Now, alvm.Topic, alvm.LessonType);
                         var lessonmodel = new LessonModel();
                         lessonmodel.Add(newlesson);
                         var markmodel = new MarkModel();
