@@ -1,0 +1,93 @@
+﻿<Window x:Class="ElJournal.Dialogs.TeacherControlDialogs.SetMarkDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ElJournal.Dialogs.TeacherControlDialogs"
+        mc:Ignorable="d"
+        x:Name="Window"
+        Title="SetMarkDialog"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Height="300" 
+        Width="500">
+    <Window.DataContext>
+        <local:SetMarkViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="40"
+            Text="Работа на уроке"/>
+        <ComboBox
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="200"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите учащегося"
+            ItemsSource="{Binding StudentsList}"
+            SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock 
+                        Text="{Binding Student.LastName}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="200"
+            FontSize="18"
+            materialDesign:HintAssist.Hint="Выберите значение"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            IsEnabled="{Binding IsStudentSelected}">
+            <TextBlock>0</TextBlock>
+            <TextBlock>1</TextBlock>
+            <TextBlock>2</TextBlock>
+            <TextBlock>3</TextBlock>
+            <TextBlock>4</TextBlock>
+            <TextBlock>5</TextBlock>
+            <TextBlock>6</TextBlock>
+            <TextBlock>7</TextBlock>
+            <TextBlock>8</TextBlock>
+            <TextBlock>9</TextBlock>
+            <TextBlock>10</TextBlock>
+            <TextBlock>Зачтено</TextBlock>
+            <TextBlock>Не зачтено</TextBlock>
+            <TextBlock>Нб</TextBlock>
+            <ComboBox.Text>
+                <Binding Path="SelectedValue" UpdateSourceTrigger="PropertyChanged"/>
+            </ComboBox.Text>
+        </ComboBox>
+        <StackPanel
+            Grid.Row="3"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right">
+            <Button 
+                Content="Поставить"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                IsEnabled="{Binding IsStudentSelected}"
+                Command="{Binding SetMark}"
+                CommandParameter="{Binding ElementName=Window}"/>
+            <Button 
+                Margin="15 0 15 0"
+                Content="Отменить"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

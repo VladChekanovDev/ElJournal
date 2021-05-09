@@ -30,7 +30,7 @@
             Grid.Row="1"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
-            CanUserDeleteRows="True"
+            CanUserDeleteRows="False"
             ItemsSource="{Binding MarksList}"
             IsReadOnly="True">
             <DataGrid.Columns>
@@ -49,6 +49,10 @@
             Orientation="Horizontal"
             VerticalAlignment="Center"
             HorizontalAlignment="Right">
+            <Button 
+                Content="Оценить работу"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                Command="{Binding SetMark}"/>
             <Button 
                 Margin="15 0 15 0"
                 Content="Назад"

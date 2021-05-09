@@ -58,5 +58,15 @@ namespace ElJournal.Models
                 }
             }
         }
+
+        public void SetValue(int markid, string value)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                var selectedmark = db.Marks.Find(markid);
+                selectedmark.Value = value;
+                db.SaveChanges();
+            }
+        }
     }
 }

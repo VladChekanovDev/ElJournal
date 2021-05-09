@@ -11,7 +11,7 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
     {
         #region Поля
 
-
+        private DelegateCommand _setMark;
 
         #endregion
 
@@ -20,6 +20,27 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
         public List<Mark> MarksList
         {
             get => new MarkModel().GetMarksByLesson(SelectedLesson.CurrentSelectedLesson.LessonID);
+        }
+
+        #endregion
+
+        #region Команды
+
+        public DelegateCommand SetMark
+        {
+            get
+            {
+                return _setMark ??= new DelegateCommand((obj) =>
+                {
+                    var setmarkdialog = new SetMarkDialog();
+                    if (setmarkdialog.ShowDialog() == true)
+                    {
+                        var smvm = (SetMarkViewModel)setmarkdialog.DataContext;
+                        new MarkModel().SetValue(smvm.SelectedStudent.MarkID, smvm.SelectedValue);
+                        OnPropertyChanged(nameof(MarksList));
+                    }
+                });
+            }
         }
 
         #endregion
