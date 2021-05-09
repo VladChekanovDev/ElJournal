@@ -153,7 +153,8 @@ namespace ElJournal.ViewModels
             {
                 if (!string.IsNullOrWhiteSpace(_filter))
                 {
-                    return LessonsList.Where(l => l.Topic.ToLower().Contains(_filter.ToLower()) || l.Topic.ToLower() == _filter.ToLower()).ToList();
+                    return LessonsList.Where(l => l.Topic.ToLower().Contains(_filter.ToLower()) || l.Topic.ToLower() == _filter.ToLower()
+                    || l.LessonType.ToLower().Contains(_filter.ToLower()) || l.LessonType.ToLower() == _filter.ToLower()).ToList();
                 }
                 else return LessonsList;
             }

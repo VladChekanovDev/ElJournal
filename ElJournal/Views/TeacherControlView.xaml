@@ -156,6 +156,22 @@
                                 Text="Новый семестр"/>
                         </StackPanel>
                     </Button>
+                    <Button 
+                        Margin="15 0 15 0"
+                        Style="{StaticResource MaterialDesignFlatLightBgButton}">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Kind="BookOpen"/>
+                            <TextBlock 
+                                Margin="5 0 0 0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Text="Посмотреть статистику"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Grid>
             <DataGrid
@@ -173,7 +189,7 @@
                         Binding="{Binding Date}"/>
                     <materialDesign:DataGridTextColumn 
                         Header="Тема"
-                        Width="350"
+                        Width="300"
                         Binding="{Binding Topic}"/>
                     <materialDesign:DataGridTextColumn 
                         Header="Тип"

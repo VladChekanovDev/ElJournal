@@ -42,6 +42,7 @@ namespace ElJournal.Models
             {
                 return db.Marks.Where(m => m.LessonID == lessonid)
                     .Include(m => m.Student)
+                    .OrderBy(m => m.Student.LastName)
                     .ToList();
             }
         }

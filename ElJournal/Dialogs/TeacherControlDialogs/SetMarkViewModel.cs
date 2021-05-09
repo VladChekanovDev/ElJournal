@@ -15,6 +15,8 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
         private Mark _selectedStudent;
         private string _selectedValue;
         private DelegateCommand _setMark;
+        private List<string> _regularvalues = new List<string>() { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Нб" };
+        private List<string> _laboratoryvalues = new List<string>() { "Не зачтено", "Зачтено", "Нб" };
 
         #endregion
 
@@ -29,6 +31,25 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
             {
                 _selectedStudent = value;
                 OnPropertyChanged(nameof(IsStudentSelected));
+            }
+        }
+
+        public List<string> ValuesList
+        {
+            get
+            {
+                switch (SelectedLesson.CurrentSelectedLesson.LessonType)
+                {
+                    case "Лабораторная": 
+                        return _laboratoryvalues;
+                    case "Практическая":
+                        return _regularvalues;
+                    case "Контрольная":
+                        return _regularvalues;
+                    case "Лекция":
+                        return _regularvalues;
+                    default: return null;
+                }
             }
         }
 

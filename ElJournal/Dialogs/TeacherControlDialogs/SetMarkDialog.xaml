@@ -53,25 +53,9 @@
             FontSize="18"
             materialDesign:HintAssist.Hint="Выберите значение"
             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-            IsEnabled="{Binding IsStudentSelected}">
-            <TextBlock>0</TextBlock>
-            <TextBlock>1</TextBlock>
-            <TextBlock>2</TextBlock>
-            <TextBlock>3</TextBlock>
-            <TextBlock>4</TextBlock>
-            <TextBlock>5</TextBlock>
-            <TextBlock>6</TextBlock>
-            <TextBlock>7</TextBlock>
-            <TextBlock>8</TextBlock>
-            <TextBlock>9</TextBlock>
-            <TextBlock>10</TextBlock>
-            <TextBlock>Зачтено</TextBlock>
-            <TextBlock>Не зачтено</TextBlock>
-            <TextBlock>Нб</TextBlock>
-            <ComboBox.Text>
-                <Binding Path="SelectedValue" UpdateSourceTrigger="PropertyChanged"/>
-            </ComboBox.Text>
-        </ComboBox>
+            IsEnabled="{Binding IsStudentSelected}"
+            ItemsSource="{Binding ValuesList}"
+            SelectedValue="{Binding SelectedValue}"/>
         <StackPanel
             Grid.Row="3"
             Orientation="Horizontal"
