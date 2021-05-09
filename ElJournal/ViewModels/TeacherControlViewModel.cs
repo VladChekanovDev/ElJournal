@@ -27,6 +27,7 @@ namespace ElJournal.ViewModels
         private DelegateCommand _addSemester;
         private DelegateCommand _addLesson;
         private DelegateCommand _showLessonMarks;
+        private DelegateCommand _deleteLesson;
 
         #endregion
 
@@ -125,7 +126,7 @@ namespace ElJournal.ViewModels
             set
             {
                 _selectedLesson = value;
-                OnPropertyChanged(nameof(IsMarksActive));
+                OnPropertyChanged(nameof(IsLessonSelected));
             }
         }
 
@@ -163,7 +164,7 @@ namespace ElJournal.ViewModels
         public bool IsGroupsListActive => _selectedSubject != null;
         public bool IsSemestersActive => _selectedGroup != null;
         public bool IsLessonsActive => _selectedSemester != null;
-        public bool IsMarksActive => _selectedLesson != null;
+        public bool IsLessonSelected => _selectedLesson != null;
 
         #endregion
 
@@ -229,6 +230,24 @@ namespace ElJournal.ViewModels
                         lessonmodel.Add(newlesson);
                         var markmodel = new MarkModel();
                         markmodel.AddLessonMarks(newlesson, StudentsList);
+                        OnPropertyChanged(nameof(LessonsList));
+                        OnPropertyChanged(nameof(FilteredList));
+                    }
+                });
+            }
+        }
+
+        public DelegateCommand DeleteLesson
+        {
+            get
+            {
+                return _deleteLesson ??= new DelegateCommand((obj) =>
+                {
+                    var confirm = new ConfirmDeleteDialog();
+                    if(confirm.ShowDialog() == true)
+                    {
+                        var lessonmodel = new LessonModel();
+                        lessonmodel.Remove(_selectedLesson);
                         OnPropertyChanged(nameof(LessonsList));
                         OnPropertyChanged(nameof(FilteredList));
                     }

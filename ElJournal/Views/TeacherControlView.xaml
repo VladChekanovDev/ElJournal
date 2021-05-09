@@ -203,7 +203,25 @@
                 </Button>
                 <Button 
                     Margin="0 0 15 0"
-                    IsEnabled="{Binding IsMarksActive}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    IsEnabled="{Binding IsLessonSelected}"
+                    Command="{Binding DeleteLesson}">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Kind="DeleteForever"/>
+                        <TextBlock
+                            Margin="5 0 0 0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Text="Удалить урок"/>
+                    </StackPanel>
+                </Button>
+                <Button 
+                    Margin="0 0 15 0"
+                    IsEnabled="{Binding IsLessonSelected}"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Command="{Binding ShowLessonMarks}">
                     <StackPanel
