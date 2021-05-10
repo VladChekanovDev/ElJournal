@@ -19,7 +19,7 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
 
         public List<Mark> MarksList
         {
-            get => new MarkModel().GetMarksByLesson(SelectedLesson.CurrentSelectedLesson.LessonID);
+            get => new MarkModel().GetMarksByLesson(CurrentInfo.CurrentSelectedLesson.LessonID);
         }
 
         #endregion

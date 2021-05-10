@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ElJournal.Entities
@@ -26,6 +27,12 @@ namespace ElJournal.Entities
             Date = date;
             Topic = topic;
             LessonType = lessontype;
+        }
+
+        [NotMapped]
+        public string ShortDate
+        {
+            get => Date.Day.ToString() + "/" + Date.Month.ToString() + "/" + Date.Year.ToString();
         }
     }
 }

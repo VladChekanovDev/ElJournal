@@ -28,6 +28,7 @@ namespace ElJournal.ViewModels
         private DelegateCommand _addLesson;
         private DelegateCommand _showLessonMarks;
         private DelegateCommand _deleteLesson;
+        private DelegateCommand _showStats;
 
         #endregion
 
@@ -262,12 +263,21 @@ namespace ElJournal.ViewModels
             {
                 return _showLessonMarks ??= new DelegateCommand((obj) =>
                 {
-                    Other.SelectedLesson.CurrentSelectedLesson = _selectedLesson;
+                    Other.CurrentInfo.CurrentSelectedLesson = _selectedLesson;
                     var showmarksdialog = new ShowMarksDialog();
-                    if (showmarksdialog.ShowDialog() == true)
-                    {
+                    showmarksdialog.ShowDialog();
+                });
+            }
+        }
 
-                    }
+        public DelegateCommand ShowStats
+        {
+            get
+            {
+                return _showStats ??= new DelegateCommand((obj) =>
+                {
+                    CurrentInfo.CurrentSelectedGroup = SelectedGroup.Group;
+                    new ShowStatsDialog().ShowDialog();
                 });
             }
         }

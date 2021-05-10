@@ -22,7 +22,7 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
 
         #region Свойства
 
-        public List<Mark> StudentsList => new MarkModel().GetMarksByLesson(SelectedLesson.CurrentSelectedLesson.LessonID);
+        public List<Mark> StudentsList => new MarkModel().GetMarksByLesson(CurrentInfo.CurrentSelectedLesson.LessonID);
 
         public Mark SelectedStudent
         {
@@ -38,7 +38,7 @@ namespace ElJournal.Dialogs.TeacherControlDialogs
         {
             get
             {
-                switch (SelectedLesson.CurrentSelectedLesson.LessonType)
+                switch (CurrentInfo.CurrentSelectedLesson.LessonType)
                 {
                     case "Лабораторная": 
                         return _laboratoryvalues;

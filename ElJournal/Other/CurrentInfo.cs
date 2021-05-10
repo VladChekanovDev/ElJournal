@@ -5,8 +5,9 @@ using System.Text;
 
 namespace ElJournal.Other
 {
-    static class SelectedLesson
+    static class CurrentInfo
     {
         public static Lesson CurrentSelectedLesson { get; set; }
+        public static Group CurrentSelectedGroup { get; set; }
     }
 }
