@@ -109,6 +109,7 @@ namespace ElJournal.ViewModels
             set
             {
                 _selectedSemester = value;
+                CurrentInfo.CurrentSelectedSemester = _selectedSemester;
                 OnPropertyChanged(nameof(LessonsList));
                 OnPropertyChanged(nameof(FilteredList));
                 OnPropertyChanged(nameof(IsLessonsActive));

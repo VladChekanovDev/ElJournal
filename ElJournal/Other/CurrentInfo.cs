@@ -9,5 +9,7 @@ namespace ElJournal.Other
     {
         public static Lesson CurrentSelectedLesson { get; set; }
         public static Group CurrentSelectedGroup { get; set; }
+
+        public static Semester CurrentSelectedSemester { get; set; }
     }
 }

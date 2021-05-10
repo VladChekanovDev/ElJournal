@@ -52,7 +52,7 @@
             IsReadOnly="True"
             VerticalScrollBarVisibility="Auto"
             HorizontalScrollBarVisibility="Disabled"
-            ItemsSource="{Binding SelectedStudent.Marks, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding MarksList, UpdateSourceTrigger=PropertyChanged}"
             IsEnabled="{Binding IsStudentSelected}">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 

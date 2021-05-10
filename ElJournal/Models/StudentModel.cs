@@ -72,17 +72,5 @@ namespace ElJournal.Models
                 return db.Students.Where(s => s.GroupID == groupid).ToList();
             }
         }
-
-        public List<Student> GetStudentsByGroupWithMarks(int groupid)
-        {
-            using (var db = new ElJournalDbContext())
-            {
-                return db.Students.Where(s => s.GroupID == groupid)
-                    .Include(s => s.Marks)
-                    .ThenInclude(m => m.Lesson)
-                    .OrderBy(s => s.LastName)
-                    .ToList();
-            }
-        }
     }
 }

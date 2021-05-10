@@ -69,5 +69,16 @@ namespace ElJournal.Models
                 db.SaveChanges();
             }
         }
+
+        public List<Mark> GetMarksByStudentAndSemester(int studentid, int semesterid)
+        {
+            using (var db = new ElJournalDbContext())
+            {
+                return db.Marks.Include(m => m.Student)
+                    .Include(m => m.Lesson)
+                    .Where(m => m.StudentID == studentid && m.Lesson.SemesterID == semesterid)
+                    .ToList();
+            }
+        }
     }
 }
