@@ -57,7 +57,7 @@
             HorizontalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
-                    Header="ID"
+                    Header="№"
                     Width="Auto"
                     Binding="{Binding Subject.SubjectID}"
                     IsReadOnly="True"/>

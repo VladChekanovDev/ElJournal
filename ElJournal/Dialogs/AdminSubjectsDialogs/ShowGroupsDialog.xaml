@@ -53,7 +53,7 @@
             ItemsSource="{Binding GroupsList}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-                    Header="ID"
+                    Header="№"
                     Width="Auto"
                     IsReadOnly="True"
                     Binding="{Binding Group.GroupID}"/>

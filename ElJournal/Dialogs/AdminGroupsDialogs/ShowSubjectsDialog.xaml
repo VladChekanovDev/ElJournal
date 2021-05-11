@@ -54,7 +54,7 @@
             ItemsSource="{Binding SubjectsList}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-                    Header="ID"
+                    Header="№"
                     Width="Auto"
                     IsReadOnly="True"
                     Binding="{Binding Subject.SubjectID}"/>

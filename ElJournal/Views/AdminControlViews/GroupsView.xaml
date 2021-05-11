@@ -164,7 +164,7 @@
             SelectedItem="{Binding SelectedGroup}">
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn 
-                    Header="ID"
+                    Header="№"
                     IsReadOnly="True"
                     Binding="{Binding GroupID}"/>
                 <materialDesign:DataGridTextColumn
