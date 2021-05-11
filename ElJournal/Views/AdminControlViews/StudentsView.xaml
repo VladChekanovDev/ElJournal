@@ -56,7 +56,8 @@
                 Orientation="Horizontal">
                 <Button
                     Margin="10 0 0 0"
-                    Command="{Binding AddStudent}">
+                    Command="{Binding AddStudent}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}">
                     <StackPanel 
                         Orientation="Horizontal">
                         <materialDesign:PackIcon 
@@ -72,7 +73,8 @@
                 </Button>
                 <Button
                     Margin="15 0 0 0"
-                    Command="{Binding DeleteStudent}">
+                    Command="{Binding DeleteStudent}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}">
                     <StackPanel 
                         Orientation="Horizontal">
                         <materialDesign:PackIcon 
@@ -88,7 +90,8 @@
                 </Button>
                 <Button 
                     Margin="15 0 0 0"
-                    Command="{Binding EditStudent}">
+                    Command="{Binding EditStudent}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}">
                     <StackPanel 
                         Orientation="Horizontal">
                         <materialDesign:PackIcon 
@@ -108,6 +111,9 @@
             Grid.Row="1"
             CanUserAddRows="False"
             AutoGenerateColumns="False"
+            CanUserDeleteRows="False"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Disabled"
             ItemsSource="{Binding FilteredList, UpdateSourceTrigger=PropertyChanged}"
             SelectedItem="{Binding SelectedStudent}">
             <DataGrid.Columns>

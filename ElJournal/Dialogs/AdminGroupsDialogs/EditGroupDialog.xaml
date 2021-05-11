@@ -59,6 +59,7 @@
             VerticalAlignment="Center">
             <Button 
                 Content="Редактировать"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
                 Command="{Binding EditGroup}"
                 CommandParameter="{Binding ElementName=Window}"
                 IsEnabled="{Binding IsEditActivated}"/>

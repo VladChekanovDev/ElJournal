@@ -104,7 +104,8 @@
                 Width="250px"
                 FontSize="18"
                 IsEnabled="{Binding IsLoginEnabled}"
-                Command="{Binding LoginUser}">
+                Command="{Binding LoginUser}"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}">
                 Войти
             </Button>
         </Grid>

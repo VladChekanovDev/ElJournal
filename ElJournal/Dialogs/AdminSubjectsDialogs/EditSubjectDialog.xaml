@@ -52,6 +52,7 @@
             HorizontalAlignment="Right"
             Orientation="Horizontal">
             <Button
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
                 IsEnabled="{Binding IsEditActive}"
                 Command="{Binding EditSubject}"
                 CommandParameter="{Binding ElementName=Window}"

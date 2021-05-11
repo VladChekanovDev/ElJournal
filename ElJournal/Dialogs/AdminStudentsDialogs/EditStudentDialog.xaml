@@ -79,6 +79,7 @@
             HorizontalAlignment="Right">
             <Button 
                 Content="Редактировать"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
                 IsEnabled="{Binding IsEditActivated}"
                 Command="{Binding EditStudent}"
                 CommandParameter="{Binding ElementName=Window}"/>

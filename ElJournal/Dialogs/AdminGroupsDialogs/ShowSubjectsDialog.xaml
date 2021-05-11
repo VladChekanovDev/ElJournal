@@ -50,6 +50,7 @@
             CanUserAddRows="False"
             CanUserDeleteRows="False"
             VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled"
             ItemsSource="{Binding SubjectsList}">
             <DataGrid.Columns>
                 <DataGridTextColumn

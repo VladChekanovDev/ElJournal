@@ -60,6 +60,7 @@
                 VerticalAlignment="Center">
                 <Button 
                     Content="Добавить"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     IsEnabled="{Binding IsAddButtonActive}"
                     Command="{Binding AddGroup}"
                     CommandParameter="{Binding ElementName=Window}"/>

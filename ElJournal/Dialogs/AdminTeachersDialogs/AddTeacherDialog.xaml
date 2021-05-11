@@ -103,6 +103,7 @@
             HorizontalAlignment="Right"
             Orientation="Horizontal">
             <Button 
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
                 Content="Добавить"
                 IsEnabled="{Binding IsAddActive}"
                 Command="{Binding AddTeacher}"
