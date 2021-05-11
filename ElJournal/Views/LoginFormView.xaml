@@ -36,7 +36,7 @@
                 FontWeight="Bold"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center">
-                ElJournal
+                GGPK
                 </TextBlock>
                 <StackPanel
                 Grid.Row="0"
