@@ -55,7 +55,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _selectedGroup = value;
-                OnPropertyChanged(nameof(SelectedGroup));
+                OnPropertyChanged(nameof(IsGroupSelected));
             }
         }
 
@@ -82,6 +82,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 OnPropertyChanged(nameof(FilteredList));
             }
         }
+
+        public bool IsGroupSelected => _selectedGroup != null;
 
         #endregion
 

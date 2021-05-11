@@ -51,7 +51,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _selectedStudent = value;
-                OnPropertyChanged();
+                OnPropertyChanged(IsStudentSelected);
             }
         }
 
@@ -81,6 +81,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                     return StudentsList;
             }
         }
+
+        public bool IsStudentSelected => _selectedStudent != null;
 
         #endregion
 

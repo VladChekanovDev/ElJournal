@@ -73,6 +73,7 @@
                 </Button>
                 <Button
                     Margin="15 0 0 0"
+                    IsEnabled="{Binding IsStudentSelected}"
                     Command="{Binding DeleteStudent}"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}">
                     <StackPanel 

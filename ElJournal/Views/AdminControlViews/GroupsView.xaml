@@ -74,6 +74,7 @@
                 </Button>
                 <Button
                     Margin="15 0 0 0"
+                    IsEnabled="{Binding IsGroupSelected}"
                     Command="{Binding DeleteGroup, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}">
                     <StackPanel 

@@ -61,7 +61,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _selectedSubject = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsSubjectSelected));
             }
         }
 
@@ -78,6 +78,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                     return _subjectsList;
             }
         }
+
+        public bool IsSubjectSelected => _selectedSubject != null;
 
         #endregion
 

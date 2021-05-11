@@ -63,7 +63,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _selectedTeacher = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsTeacherSelected));
             }
         }
 
@@ -90,6 +90,8 @@ namespace ElJournal.ViewModels.AdminControlViewModels
                 else return TeachersList;
             }
         }
+
+        public bool IsTeacherSelected => _selectedTeacher != null;
 
         #endregion
 
