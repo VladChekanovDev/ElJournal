@@ -92,6 +92,7 @@
                     </Button>
                     <Button 
                         Margin="15 0 15 0"
+                        IsEnabled="{Binding IsTeacherSelected}"
                         Command="{Binding EditTeacher}"
                         Style="{StaticResource MaterialDesignFlatLightBgButton}">
                         <StackPanel 
@@ -120,6 +121,7 @@
                     Orientation="Horizontal">
                     <Button
                         Margin="10 0 0 0"
+                        IsEnabled="{Binding IsTeacherSelected}"
                         Command="{Binding AddSubject}"
                         Style="{StaticResource MaterialDesignFlatLightBgButton}">
                         <StackPanel

@@ -91,6 +91,7 @@
                 </Button>
                 <Button 
                     Margin="15 0 0 0"
+                    IsEnabled="{Binding IsStudentSelected}"
                     Command="{Binding EditStudent}"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}">
                     <StackPanel 
