@@ -14,7 +14,7 @@ namespace ElJournal.ViewModels
     class AdminControlViewModel: BaseViewModel
     {
         #region Поля
-        private UserControl _selectedUserControl;
+        private UserControl _selectedUserControl = new DefaultView();
         private DelegateCommand _changeSelection;
         private DelegateCommand _logout;
 
