@@ -51,6 +51,7 @@
             <Button 
                 Content="Подтвердить"
                 IsDefault="True"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
                 Command="{Binding Confirm}"
                 CommandParameter="{Binding ElementName=Window}"/>
             <Button 
