@@ -51,7 +51,7 @@ namespace ElJournal.ViewModels.AdminControlViewModels
             set
             {
                 _selectedStudent = value;
-                OnPropertyChanged(IsStudentSelected);
+                OnPropertyChanged(nameof(IsStudentSelected));
             }
         }
 
