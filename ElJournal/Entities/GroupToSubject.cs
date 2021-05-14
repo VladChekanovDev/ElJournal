@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ElJournal.Entities
 {
-    class GroupToSubject
+    public class GroupToSubject
     {
         public int GroupToSubjectID { get; set; }
         public int GroupID { get; set; }

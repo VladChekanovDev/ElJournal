@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ElJournal.Models
 {
-    class UserModel: IModel<User>
+    public class UserModel: IModel<User>
     {
         public void Add(User user)
         {
@@ -43,8 +43,8 @@ namespace ElJournal.Models
                 User user = db.Users.FirstOrDefault(u => u.Login == login && u.Pass == pass);
                 if (user == null)
                 {
-                    var errDialog = new ErrorDialog(Validation.UserNotFoundError);
-                    errDialog.ShowDialog();
+                    //var errDialog = new ErrorDialog(Validation.UserNotFoundError);
+                    //errDialog.ShowDialog();
                     return false;
                 }
                 else

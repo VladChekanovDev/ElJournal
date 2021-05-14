@@ -1,4 +1,5 @@
 ﻿using ElJournal.Entities;
+using ElJournal.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace ElJournal.Other
 {
-    class ElJournalDbContext: DbContext
+    public class ElJournalDbContext: DbContext
     {
         public ElJournalDbContext(): base()
         {

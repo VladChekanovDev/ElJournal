@@ -7,7 +7,7 @@ using ElJournal.Other;
 
 namespace ElJournal.Models
 {
-    class AdminModel: IModel<Admin>
+    public class AdminModel: IModel<Admin>
     {
         public void Add(Admin admin)
         {

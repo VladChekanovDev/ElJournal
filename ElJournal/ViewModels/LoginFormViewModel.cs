@@ -21,6 +21,22 @@ namespace ElJournal.ViewModels
 
         #endregion
 
+        #region Конструктор
+
+        public LoginFormViewModel()
+        {
+            using var db = new ElJournalDbContext();
+            if (!new UserModel().IsUserExist("admin"))
+            {
+                var um = new UserModel();
+                var user = new User("admin", "505800", 0);
+                var admin = new Admin();
+                um.AddAdmin(admin, user);
+            }
+        }
+
+        #endregion
+
         #region Свойства
 
         public string Login

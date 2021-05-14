@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ElJournal.Models
 {
-    class SubjectModel: IModel<Subject>
+    public class SubjectModel: IModel<Subject>
     {
         public void Add(Subject subject)
         {

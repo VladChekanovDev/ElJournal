@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ElJournal.Entities
 {
-    class Lesson
+    public class Lesson
     {
         public int LessonID { get; set; }
         public int SubjectID { get; set; }

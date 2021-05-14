@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ElJournal.Models
 {
-    class GroupModel: IModel<Group>
+    public class GroupModel: IModel<Group>
     {
         public void Add(Group group)
         {
